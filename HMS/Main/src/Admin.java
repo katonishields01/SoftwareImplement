@@ -13,7 +13,7 @@ public class Admin {
             System.out.println("3. Remove Staff");
             System.out.println("4. Create Invoice");
             System.out.println("5. Schedule Appointment");
-            System.out.println("6. View Patient Basic Information Records");
+            System.out.println("6. View Patient Personal Information Records");
             System.out.println("7. Upload Prescription Order");
             System.out.println("8. View Patient Medical History");
             System.out.println("9. Exit");
