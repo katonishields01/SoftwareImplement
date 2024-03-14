@@ -30,3 +30,5 @@ public class Main {
 
   /*Admin enter = new Admin();
         enter.AdminMenu();*/
+
+        /*New person, who dis?*/
