@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Scanner scanner = new Scanner(System.in); 
+        /*Scanner scanner = new Scanner(System.in); 
         int choice;
         do {
             System.out.print("Please Select: ");
@@ -25,6 +25,10 @@ public class Main {
             }
             scanner.close();
         }while (choice != 2);
+    }*/
+
+        Admin enter = new Admin();
+        enter.AdminMenu();
     }
 }
 
