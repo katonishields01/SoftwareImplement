@@ -29,4 +29,12 @@ public class Main {
 }
 
   /*Admin enter = new Admin();
+<<<<<<< HEAD
         enter.AdminMenu();*/
+=======
+        enter.AdminMenu();*/
+
+        /*New person, who dis?*/
+
+        //testinhg case
+>>>>>>> 96ea1dec0ef132a847a3d8c9b767df08b3c238b4
