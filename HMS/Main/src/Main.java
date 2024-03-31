@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in); 
         int choice;
-        do {
+        /*do {
             System.out.print("Please Select: ");
             System.out.println("\n1. Log-In");
             System.out.println("2. Sign-Up");
@@ -32,3 +32,9 @@ public class Main {
 
   /*Admin enter = new Admin();
         enter.AdminMenu();*/
+/*public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean consultationDocumented = false;
+        String patientId = "";
+        String requestStatus = "";
+        String labResults = ""; */

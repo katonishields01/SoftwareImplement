@@ -2,14 +2,9 @@ import java.util.Scanner;
 
 public class Doctor {
     public void DoctorMenu () {
-    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean consultationDocumented = false;
-        String patientId = "";
-        String requestStatus = "";
-        String labResults = "";
-
-        while (true) {
+        int input;
+        do {
             System.out.println("Menu:");
             System.out.println("1: Request consultation with doctor");
             System.out.println("2: Request a prescription refill");
@@ -17,10 +12,10 @@ public class Doctor {
             System.out.println("4: Request lab results");
             System.out.println("5: Exit");
             System.out.print("Enter your choice: ");
-            int input = scanner.nextInt();
+            input = scanner.nextInt();
 
             switch (input) {
-                case REQUEST_CONSULTATION:
+                case 1:
                     System.out.println("Request consultation with doctor");
                     // Request consultation with doctor
                     requestStatus = "approved";
@@ -32,7 +27,7 @@ public class Doctor {
                         System.out.println("Consultation request not approved");
                     }
                     break;
-                case REQUEST_PRESCRIPTION_REFILL:
+                case 2:
                     if (consultationDocumented) {
                         System.out.println("Request a Prescription Refill");
                         System.out.print("Enter PatientID: ");
@@ -43,16 +38,17 @@ public class Doctor {
                         System.out.println("Consultation not documented yet");
                     }
                     break;
-                case REQUEST_CHAT:
+                case 3:
                     System.out.println("Request Chat with a doctor");
                     System.out.print("Enter PatientID: ");
                     patientId = scanner.next();
                     // Chat with patient
                     break;
-                case REQUEST_LAB_RESULTS:
+                case 4:
                     System.out.println("Request Lab Results");
                     System.out.print("Enter PatientID: ");
                     patientId = scanner.next();
+                    LabTech results = new LabTech();
                     // Request Lab Results
                     if (labResults.equals("available")) {
                         System.out.println("Upload patient lab results");
@@ -63,15 +59,16 @@ public class Doctor {
                         System.out.println("Lab results not available");
                     }
                     break;
-                case EXIT:
+                case 5:
                     System.out.println("Exiting...");
                     System.exit(0);
-                    break;
+                    Login in = new Login();
+                    in.User();
                 default:
                     System.out.println("Invalid! Please enter a valid input");
                     break;
             }
-        }
+        } while (input != 5);
     }
 }
-}
+

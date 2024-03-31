@@ -31,7 +31,7 @@ public class LabTech {
                     viewLabResults();
                     break;
                 case 4:
-                    System.out.println("Exiting System");
+                    System.out.println("Exiting...");
                     System.exit(0);
                     Login in = new Login();
                     in.User();
@@ -39,6 +39,7 @@ public class LabTech {
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
             }
+            scanner.close();
         }while (choice != 5);
 
     } 
