@@ -6,8 +6,7 @@ public class Admin {
         Scanner scanner = new Scanner(System.in); 
         int choice;
         do {
-            System.out.println("    WELCOME ADMIN   ");
-            System.out.println("      \n     Admin Menu     ");
+            System.out.println("******WELCOME ADMINISTRATOR MENU******");
             System.out.println("\n1. Register Patient");
             System.out.println("2. Register Staff");
             System.out.println("3. Remove Staff");

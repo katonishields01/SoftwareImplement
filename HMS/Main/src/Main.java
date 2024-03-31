@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        /*Scanner scanner = new Scanner(System.in); 
+        Scanner scanner = new Scanner(System.in); 
         int choice;
         do {
             System.out.print("Please Select: ");
@@ -32,7 +32,3 @@ public class Main {
 
   /*Admin enter = new Admin();
         enter.AdminMenu();*/
-
-        /*New person, who dis?*/
-
-        //testinhg case
