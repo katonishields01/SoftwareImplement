@@ -27,8 +27,6 @@ public class Main {
         }while (choice != 2);
     }*/
 
-        Admin enter = new Admin();
-        enter.AdminMenu();
     }
 }
 
