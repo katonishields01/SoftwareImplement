@@ -39,20 +39,23 @@ public class Login {
 
                     switch (userType) {
                         case "admin":
-                            Admin enter = new Admin();
-                            enter.AdminMenu();
+                            Admin enter1 = new Admin();
+                            enter1.AdminMenu();
                             break;
                         case "patient":
-                            // code for patient
+                            Patient enter2 = new Patient();
+                            //enter2.
                             break;
                         case "doctor":
-                            // code for doctor
+                            Doctor enter3 = new Doctor();
+                            enter3.doctorMenu();
                             break;
                         case "nurse":
                             // code for nurse
                             break;
                         case "lab tech":
-                            // code for lab tech
+                            LabTech enter5 = new LabTech();
+                            enter5.labTechMenu();
                             break;
                         default:
                             System.out.println("Invalid user type");

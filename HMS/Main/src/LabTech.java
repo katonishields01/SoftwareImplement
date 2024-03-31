@@ -7,7 +7,7 @@ public class LabTech {
     private String shift;
     private ArrayList<LabTech> labTechs;
     private Scanner scanner;
-    public void labTechMenu() {
+    public void labTechMenu(){
         Scanner scanner = new Scanner(System.in); 
         int choice;
         do {

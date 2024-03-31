@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Doctor {
-    public void DoctorMenu () {
+    public void doctorMenu () {
         Scanner scanner = new Scanner(System.in);
         int input;
         do {
