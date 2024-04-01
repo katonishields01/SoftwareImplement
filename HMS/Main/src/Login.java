@@ -24,7 +24,7 @@ public class Login {
 
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
-            String query = "SELECT * FROM tblUsers WHERE username = ?";
+            String query = "SELECT * FROM Users WHERE username = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
 

@@ -1,9 +1,18 @@
 import java.util.Scanner;
 
 public class Doctor {
+    //private boolean consultationDocumented = false;
+    //private String patientId = "";
+    //private String requestStatus = "";
+    //private String labResults = ""; 
+
     public void doctorMenu () {
         Scanner scanner = new Scanner(System.in);
         int input;
+        boolean consultationDocumented = false;
+        String patientId = "";
+        String requestStatus = "";
+        String labResults = ""; 
         do {
             System.out.println("Menu:");
             System.out.println("1: Request consultation with doctor");
