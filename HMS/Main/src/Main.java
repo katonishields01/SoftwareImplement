@@ -32,14 +32,6 @@ public class Main {
                 scanner.close();
             }while (choice != 2);
         }
-        
     }
 
-  /*Admin enter = new Admin();
-        enter.AdminMenu();*/
-/*public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        boolean consultationDocumented = false;
-        String patientId = "";
-        String requestStatus = "";
-        String labResults = ""; */
+  
