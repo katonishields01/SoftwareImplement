@@ -31,10 +31,10 @@ public class LabTech {
                     viewLabResults();
                     break;
                 case 4:
-                    System.out.println("Exiting...");
-                    System.exit(0);
-                    Login in = new Login();
-                    in.User();
+                System.out.println("Exiting...");
+                System.out.println("Logged out Successfully");
+                Main in = new Main();
+                in.Home();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");

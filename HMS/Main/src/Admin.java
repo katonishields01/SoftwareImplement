@@ -55,9 +55,9 @@ public class Admin {
                     break;
                 case 9:
                 System.out.println("Exiting...");
-                System.exit(0);
-                Login in = new Login();
-                in.User();
+                System.out.println("Logged out Successfully");
+                Main in = new Main();
+                in.Home();
                 default:
                     System.out.println("Invalid option. Please choose a number from 1 to 7.");
                     break;

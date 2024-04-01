@@ -66,10 +66,10 @@ public class Doctor {
                     }
                     break;
                 case 5:
-                    System.out.println("Exiting...");
-                    System.exit(0);
-                    Login in = new Login();
-                    in.User();
+                System.out.println("Exiting...");
+                System.out.println("Logged out Successfully");
+                Main in = new Main();
+                in.Home();
                 default:
                     System.out.println("Invalid! Please enter a valid input");
                     break;

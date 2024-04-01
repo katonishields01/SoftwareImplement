@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Login {
 
-    private static final String url = "jdbc:mysql://localhost:3306/";
+    private static final String url = "jdbc:mysql://localhost:3306/admin";
     private static final String user = "root";
     private static final String password = "SIProject2024";
 
@@ -24,7 +24,7 @@ public class Login {
 
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
-            String query = "SELECT * FROM Users WHERE username = ?";
+            String query = "SELECT * FROM users WHERE username = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
 
@@ -32,9 +32,11 @@ public class Login {
 
             if (resultSet.next()) {
                 String hashedPassword = resultSet.getString("password");
-                String userType = resultSet.getString("user_type");
+                String userType = "admin";
+                // String userType = resultSet.getString("user_type");
 
-                if (isPasswordValid(passwordInput, hashedPassword)) {
+                // if (isPasswordValid(passwordInput, hashedPassword)) {
+                    if (passwordInput.equals(hashedPassword)) {
                     System.out.println("Login successful. Welcome " + userType);
 
                     switch (userType) {
@@ -43,19 +45,19 @@ public class Login {
                             enter1.AdminMenu();
                             break;
                         case "patient":
-                            Patient enter2 = new Patient();
+                            //Patient enter2 = new Patient();
                             //enter2.
                             break;
                         case "doctor":
-                            Doctor enter3 = new Doctor();
+                            /*Doctor enter3 = new Doctor();
                             enter3.doctorMenu();
-                            break;
+                            break;*/
                         case "nurse":
                             // code for nurse
                             break;
                         case "lab tech":
-                            LabTech enter5 = new LabTech();
-                            enter5.labTechMenu();
+                            //LabTech enter5 = new LabTech();
+                            //enter5.labTechMenu();
                             break;
                         default:
                             System.out.println("Invalid user type");
