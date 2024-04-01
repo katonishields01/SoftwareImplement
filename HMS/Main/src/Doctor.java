@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Doctor {
     public void DoctorMenu () {
-    public static void main(String[] args) {
+    
         Scanner scanner = new Scanner(System.in);
         int input;
         boolean consultationDocumented = false;
@@ -22,7 +22,7 @@ public class Doctor {
             int input = scanner.nextInt();
 
             switch (input) {
-                case REQUEST_CONSULTATION:
+                case 1:
                     System.out.println("Request consultation with doctor");
                     // Request consultation with doctor
                     requestStatus = "approved";
