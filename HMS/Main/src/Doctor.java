@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class Doctor {
     public void DoctorMenu () {
-
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        int input;
         boolean consultationDocumented = false;
         String patientId = "";
         String requestStatus = "";
         String labResults = "";
-        int choice = scanner.nextInt();
 
         while (true) {
             System.out.println("Menu:");
@@ -18,9 +18,10 @@ public class Doctor {
             System.out.println("4: Request lab results");
             System.out.println("5: Exit");
             System.out.print("Enter your choice: ");
+            int input = scanner.nextInt();
 
-            switch (choice) {
-                case 1:
+            switch (input) {
+                case REQUEST_CONSULTATION:
                     System.out.println("Request consultation with doctor");
                     // Request consultation with doctor
                     requestStatus = "approved";
@@ -53,7 +54,6 @@ public class Doctor {
                     System.out.println("Request Lab Results");
                     System.out.print("Enter PatientID: ");
                     patientId = scanner.next();
-                    System.out.println("Patient ID: " + patientId);
                     // Request Lab Results
                     if (labResults.equals("available")) {
                         System.out.println("Upload patient lab results");
@@ -67,12 +67,13 @@ public class Doctor {
                 case 5:
                     System.out.println("Exiting...");
                     System.exit(0);
-                    break;
+                    Login in = new Login();
+                    in.User();
                 default:
                     System.out.println("Invalid! Please enter a valid input");
                     break;
             }
-            scanner.close();
-}
+        }
     }
+}
 }

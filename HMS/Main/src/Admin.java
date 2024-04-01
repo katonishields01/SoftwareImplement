@@ -6,8 +6,7 @@ public class Admin {
         Scanner scanner = new Scanner(System.in); 
         int choice;
         do {
-            System.out.println("    WELCOME ADMIN   ");
-            System.out.println("      \n     Admin Menu     ");
+            System.out.println("******WELCOME ADMINISTRATOR MENU******");
             System.out.println("\n1. Register Patient");
             System.out.println("2. Register Staff");
             System.out.println("3. Remove Staff");
@@ -54,8 +53,10 @@ public class Admin {
                     // Add your logic for viewing patient medical history here
                     break;
                 case 9:
-                    System.out.println("Exiting...");
-                    break;
+                System.out.println("Exiting...");
+                System.exit(0);
+                Login in = new Login();
+                in.User();
                 default:
                     System.out.println("Invalid option. Please choose a number from 1 to 7.");
                     break;
