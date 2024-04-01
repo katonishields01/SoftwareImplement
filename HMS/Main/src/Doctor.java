@@ -8,7 +8,7 @@ public class Doctor {
         String patientId = "";
         String requestStatus = "";
         String labResults = "";
-        int input = scanner.nextInt();
+        int choice = scanner.nextInt();
 
         while (true) {
             System.out.println("Menu:");
@@ -19,7 +19,7 @@ public class Doctor {
             System.out.println("5: Exit");
             System.out.print("Enter your choice: ");
 
-            switch (input) {
+            switch (choice) {
                 case 1:
                     System.out.println("Request consultation with doctor");
                     // Request consultation with doctor
