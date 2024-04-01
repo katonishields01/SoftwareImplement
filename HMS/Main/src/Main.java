@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in); 
         int choice;
-        do {
+        /*do {
             System.out.print("Please Select: ");
             System.out.println("\n1. Log-In");
             System.out.println("2. Sign-Up");
@@ -25,16 +25,19 @@ public class Main {
             }
             scanner.close();
         }while (choice != 2);
+    }*/
+
+    Doctor doc = new Doctor();
+    doc.doctorMenu();
+
     }
 }
 
   /*Admin enter = new Admin();
-<<<<<<< HEAD
         enter.AdminMenu();*/
-=======
-        enter.AdminMenu();*/
-
-        /*New person, who dis?*/
-
-        //testinhg case
->>>>>>> 96ea1dec0ef132a847a3d8c9b767df08b3c238b4
+/*public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean consultationDocumented = false;
+        String patientId = "";
+        String requestStatus = "";
+        String labResults = ""; */

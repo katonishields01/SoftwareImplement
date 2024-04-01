@@ -53,8 +53,10 @@ public class Admin {
                     // Add your logic for viewing patient medical history here
                     break;
                 case 9:
-                    System.out.println("Exiting...");
-                    break;
+                System.out.println("Exiting...");
+                System.exit(0);
+                Login in = new Login();
+                in.User();
                 default:
                     System.out.println("Invalid option. Please choose a number from 1 to 7.");
                     break;
