@@ -27,6 +27,9 @@ public class Main {
         }while (choice != 2);
     }*/
 
+    Doctor doc = new Doctor();
+    doc.doctorMenu();
+
     }
 }
 
