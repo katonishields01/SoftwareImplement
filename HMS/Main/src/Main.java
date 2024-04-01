@@ -35,9 +35,18 @@ public class Main {
 
   /*Admin enter = new Admin();
         enter.AdminMenu();*/
+<<<<<<< HEAD
+
+        /*New person, who dis?*/
+
+        //testinhg case
+
+        
+=======
 /*public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean consultationDocumented = false;
         String patientId = "";
         String requestStatus = "";
         String labResults = ""; */
+>>>>>>> 76240066690f7eed69c2a119a785446ec47c48e4
