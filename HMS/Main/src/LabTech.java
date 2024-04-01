@@ -7,7 +7,7 @@ public class LabTech {
     private String shift;
     private ArrayList<LabTech> labTechs;
     private Scanner scanner;
-    public void labTechMenu(){
+    public void labTechMenu() {
         Scanner scanner = new Scanner(System.in); 
         int choice;
         do {
@@ -145,6 +145,12 @@ public class LabTech {
         }
 
         System.out.println("Inventory item not found with the given ID.");
+    }
+
+    private static class LabTech {
+        private int labTechID;
+        private String labTechName;
+        private String shift;
     }
 
 }
