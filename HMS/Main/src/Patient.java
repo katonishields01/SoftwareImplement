@@ -9,19 +9,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Patient {
-public static void main(String[] args) 
+public void patientMenu() 
     {
         Scanner scanner = new Scanner (System.in);
-        String Patient_name;
+        //String Patient_name;
         String requestAppointment, requestLabResults, requestPrescription;
         float invoice_Bal;
         int choice;
 
         System.out.println("Welcome to our Hospital Management Patient System!");
-
-        System.out.println("Please enter your name: ");
-        Patient_name = scanner.nextLine();
-
         do {
             System.out.println("Please select your choice from the Menu below: ");
             System.out.println("1. Request an appointment");
@@ -96,7 +92,11 @@ public static void main(String[] args)
                 
                 /* Case 5 to allow user to exit system */
                 case 5:
-                    System.out.println("Thank you for using our Patient System " + Patient_name + ".");
+                System.out.println("Exiting...");
+                //System.exit(0);
+                System.out.println("Logged out Successfully");
+                Main in = new Main();
+                in.Home();
                     break;
                 /* Defaults in the case user enters invalid choice */
                 default:

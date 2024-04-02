@@ -6,7 +6,7 @@ public class Main {
         Main in = new Main();
         in.Home();
     }
-
+//changes
     public void Home() 
         {
             Scanner scanner = new Scanner(System.in); 
