@@ -11,7 +11,7 @@ public class LabTech {
         Scanner scanner = new Scanner(System.in); 
         int choice;
         do {
-            System.out.println("\tWELCOME")
+            System.out.println("\tWELCOME");
             System.out.println("\n\tMenu Options:");
             System.out.println("1. Add Lab Results");
             System.out.println("2. Remove Lab Results");

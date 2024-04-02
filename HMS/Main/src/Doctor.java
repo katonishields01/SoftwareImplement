@@ -12,18 +12,18 @@ public class Doctor {
         String labResults = "";
 
         while (true) {
-            System.out.println("Menu:");
-            System.out.println("1: Request consultation with doctor");
-            System.out.println("2: Request a prescription refill");
-            System.out.println("3: Request a chat with a doctor");
+            System.out.println("Doctor's Menu:");
+            System.out.println("1: Document consultation");
+            System.out.println("2: Document prescription refill");
+            System.out.println("3: Document chat with a doctor");
             System.out.println("4: Request lab results");
             System.out.println("5: Exit");
             System.out.print("Enter your choice: ");
-            int input = scanner.nextInt();
+            input = scanner.nextInt();
 
             switch (input) {
                 case 1:
-                    System.out.println("Request consultation with doctor");
+                    System.out.println("Consultation with doctor");
                     // Request consultation with doctor
                     requestStatus = "approved";
                     if (requestStatus.equals("approved")) {
@@ -36,7 +36,7 @@ public class Doctor {
                     break;
                 case 2:
                     if (consultationDocumented) {
-                        System.out.println("Request a Prescription Refill");
+                        System.out.println("Document a Prescription Refill");
                         System.out.print("Enter PatientID: ");
                         patientId = scanner.next();
                         System.out.println("Patient ID: " + patientId);
@@ -45,7 +45,7 @@ public class Doctor {
                     }
                     break;
                 case 3:
-                    System.out.println("Request Chat with a doctor");
+                    System.out.println("Document Chat with a doctor");
                     System.out.print("Enter PatientID: ");
                     patientId = scanner.next();
                     System.out.println("Patient ID: " + patientId);
@@ -77,4 +77,4 @@ public class Doctor {
         }
     }
 }
-}
+
