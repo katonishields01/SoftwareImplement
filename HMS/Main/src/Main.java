@@ -1,12 +1,9 @@
 import java.util.Scanner;
-// Shemar brown
-//test
 public class Main {
     public static void main(String[] args) throws Exception {
         Main in = new Main();
         in.Home();
     }
-//changes
     public void Home() 
         {
             Scanner scanner = new Scanner(System.in); 
