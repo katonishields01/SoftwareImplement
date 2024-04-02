@@ -32,8 +32,9 @@ public class Login {
 
             if (resultSet.next()) {
                 String hashedPassword = resultSet.getString("password");
-                String userType = "admin";
-                // String userType = resultSet.getString("user_type");
+                //String[] userType = {"admin", "patient", "doctor", "lab_tech", "nurse"};
+                //String userType = "admin";
+                String userType = resultSet.getString("user_type");
 
                 // if (isPasswordValid(passwordInput, hashedPassword)) {
                     if (passwordInput.equals(hashedPassword)) {
@@ -45,8 +46,8 @@ public class Login {
                             enter1.AdminMenu();
                             break;
                         case "patient":
-                            //Patient enter2 = new Patient();
-                            //enter2.
+                            Patient enter2 = new Patient();
+                            enter2.patientMenu();
                             break;
                         case "doctor":
                             /*Doctor enter3 = new Doctor();
@@ -55,7 +56,7 @@ public class Login {
                         case "nurse":
                             // code for nurse
                             break;
-                        case "lab tech":
+                        case "lab_tech":
                             //LabTech enter5 = new LabTech();
                             //enter5.labTechMenu();
                             break;

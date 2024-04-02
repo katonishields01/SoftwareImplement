@@ -22,39 +22,43 @@ public class Admin {
 
             switch (choice) {
                 case 1:
+                    //logic for registering a patient
                     System.out.println("You have chosen to Register Patient");
-                    // Add your logic for registering a patient here
+                    
                     break;
                 case 2:
+                    //logic for registering a staff 
                     System.out.println("You have chosen to Register Staff");
-                    // Add your logic for registering a patient here
+                    
                     break;
                 case 3:
-                    System.out.println("You have chosen to Register Staff");
-                    // Add your logic for registering a patient here
+                    //logic for creating an invoice 
+                    System.out.println("You have chosen to Create Invoice");
+                    
                     break;
                 case 4:
-                    System.out.println("You have chosen to Create Invoice");
-                    // Add your logic for creating an invoice here
+                    //logic for scheduling an appointment 
+                    System.out.println("You have chosen to Schedule Appointment");
+                    
                     break;
                 case 5:
-                    System.out.println("You have chosen to Schedule Appointment");
-                    // Add your logic for scheduling an appointment here
+                    //logic for viewing patient basic information records
+                    System.out.println("You have chosen to View Patient Basic Information Records");
+                    
                     break;
                 case 6:
-                    System.out.println("You have chosen to View Patient Basic Information Records");
-                    // Add your logic for viewing patient basic information records here
+                    // logic for uploading a prescription order 
+                    System.out.println("You have chosen to Upload Prescription Order");
+                    
                     break;
                 case 7:
-                    System.out.println("You have chosen to Upload Prescription Order");
-                    // Add your logic for uploading a prescription order here
+                    //logic for viewing patient medical history 
+                    System.out.println("You have chosen to View Patient Medical History");
+                    
                     break;
                 case 8:
-                    System.out.println("You have chosen to View Patient Medical History");
-                    // Add your logic for viewing patient medical history here
-                    break;
-                case 9:
                 System.out.println("Exiting...");
+                //System.exit(0);
                 System.out.println("Logged out Successfully");
                 Main in = new Main();
                 in.Home();
@@ -63,6 +67,6 @@ public class Admin {
                     break;
             }
             scanner.close();
-        }while (choice != 9);
+        }while (choice != 8);
     }
 }
