@@ -1,3 +1,7 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -40,11 +44,49 @@ public class LabTech {
                     System.out.println("Invalid choice. Please enter a valid option.");
             }
             scanner.close();
-        }while (choice != 5);
+        }while (choice != 4);
 
     } 
     
-    private void addLabTech() {
+    public void addLabTech() {
+    LabTech labTech = new LabTech();
+
+    System.out.print("Enter Lab Technician ID: ");
+    labTech.labTechID = scanner.nextInt();
+    scanner.nextLine();
+
+    System.out.print("Enter Lab Technician First Name: ");
+    labTech.labTechName = scanner.nextLine();
+
+    System.out.print("Enter Lab Technician Last Name: ");
+    labTech.labTechName = scanner.nextLine();
+
+    System.out.print("Enter Lab Technician Username: ");
+    labTech.shift = scanner.nextLine();
+
+    System.out.print("Enter Lab Technician Password: ");
+    labTech.shift = scanner.nextLine();
+
+    System.out.print("Enter Lab Technician Contact: ");
+    labTech.shift = scanner.nextLine();
+
+    // Add lab technician to database
+    try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
+        String query = "INSERT INTO users (labTechID, labTechName, shift) VALUES (?, ?, ?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1, labTech.labTechID);
+        preparedStatement.setString(2, labTech.labTechName);
+        preparedStatement.setString(3, labTech.shift);
+
+        int rowsInserted = preparedStatement.executeUpdate();
+        if (rowsInserted > 0) {
+            System.out.println("Lab Technician added successfully.");
+        }
+    } catch (SQLException e) {
+        System.out.println("Error adding lab technician: " + e.getMessage());
+    }
+
+    /*private void addLabTech() {
         LabTech labTech = new LabTech();
 
         System.out.print("Enter Lab Technician ID: ");
@@ -59,10 +101,10 @@ public class LabTech {
 
         labTechs.add(labTech);
         System.out.println("Lab Technician added successfully.");
-    }
+    }*/
 
 
-    private void removeLabTech() {
+    public void removeLabTech() {
         System.out.print("Enter Lab Technician ID to remove: ");
         int labTechID = scanner.nextInt();
 
@@ -75,7 +117,7 @@ public class LabTech {
         }
     }
 
-    private void viewLabTechDetails() {
+    public void viewLabTechDetails() {
         System.out.print("Enter Lab Technician ID to view details: ");
         int labTechID = scanner.nextInt();
 
@@ -128,7 +170,8 @@ public class LabTech {
         }
     }
 
-    public void viewLabResults() {
+    public void viewLabResults() 
+    {
         System.out.print("Enter Item ID to view details: ");
         int itemID = scanner.nextInt();
 
@@ -153,4 +196,5 @@ public class LabTech {
         private String shift;
     }
 
+}
 }

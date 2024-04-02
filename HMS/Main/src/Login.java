@@ -33,8 +33,8 @@ public class Login {
             if (resultSet.next()) {
                 String hashedPassword = resultSet.getString("password");
                 //String[] userType = {"admin", "patient", "doctor", "lab_tech", "nurse"};
-                //String userType = "admin";
-                String userType = resultSet.getString("user_type");
+                String userType = "admin";
+                //String userType = resultSet.getString("user_type");
 
                 // if (isPasswordValid(passwordInput, hashedPassword)) {
                     if (passwordInput.equals(hashedPassword)) {
@@ -65,9 +65,13 @@ public class Login {
                     }
                 } else {
                     System.out.println("Invalid username or password");
+                    Main in = new Main();
+                    in.Home();
                 }
             } else {
                 System.out.println("Invalid username or password");
+                Main in = new Main();
+                in.Home();
             }
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
