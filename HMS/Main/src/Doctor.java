@@ -226,7 +226,7 @@ public class Doctor {
 
 
 
-
+/////////////////////////////ignore/////////////////////////
 /* 
 public class Doctor {
     public void DoctorMenu () {
