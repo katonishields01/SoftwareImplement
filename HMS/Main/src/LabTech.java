@@ -1,17 +1,26 @@
-import java.util.ArrayList;
+//Shemar Brown (ID#)
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class LabTech {
     private int labTechID;
-    private String labTechName;
-    private String shift;
-    private ArrayList<LabTech> labTechs;
-    private Scanner scanner;
+    private String labTechFName;
+    private String labTechLName;
+    private String userName;
+    private String pass;
+    private String userType;
+    private int number;
+
+
     public void labTechMenu() {
         Scanner scanner = new Scanner(System.in); 
         int choice;
         do {
-            System.out.println("\tWELCOME")
+            System.out.println("\tWELCOME");
             System.out.println("\n\tMenu Options:");
             System.out.println("1. Add Lab Results");
             System.out.println("2. Remove Lab Results");
@@ -22,135 +31,129 @@ public class LabTech {
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                    addLabResults();
+                    ResultsStorage re1 = new ResultsStorage() ;
+                    re1.addLabResults();
                     break;
                 case 2:
-                    removeLabResults();
+                    ResultsStorage re2 = new ResultsStorage();
+                    re2.removeLabResults();;
                     break;
                 case 3:
-                    viewLabResults();
+                    ResultsStorage re3 = new ResultsStorage();
+                    re3.viewLabResults();
                     break;
                 case 4:
-                    System.out.println("Exiting...");
-                    System.exit(0);
-                    Login in = new Login();
-                    in.User();
+                System.out.println("Exiting...");
+                System.out.println("Logged out Successfully");
+                Main in = new Main();
+                in.Home();
                     break;
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
+                    labTechMenu();
             }
-            scanner.close();
-        }while (choice != 5);
+        }while (choice != 4);
+        scanner.close();
+    }
 
-    } 
-    
-    private void addLabTech() {
-        LabTech labTech = new LabTech();
+    public void addLabTech() {
+        Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter Lab Technician ID: ");
-        labTech.labTechID = scanner.nextInt();
-        scanner.nextLine();
+        labTechID = Integer.parseInt(scanner.nextLine());
+        //scanner.nextLine();
 
-        System.out.print("Enter Lab Technician Name: ");
-        labTech.labTechName = scanner.nextLine();
+        System.out.print("Enter User Type: ");
+        userType = scanner.nextLine();
 
-        System.out.print("Enter Lab Technician Shift: ");
-        labTech.shift = scanner.nextLine();
+        System.out.print("Enter Lab Technician First Name: ");
+        labTechFName = scanner.nextLine();
 
-        labTechs.add(labTech);
-        System.out.println("Lab Technician added successfully.");
+        System.out.print("Enter Lab Technician Last Name: ");
+        labTechLName = scanner.nextLine();
+
+        System.out.print("Enter Lab Technician Username: ");
+        userName = scanner.nextLine();
+
+        System.out.print("Enter Lab Technician Password: ");
+        pass = scanner.nextLine();
+
+        System.out.print("Enter Lab Technician Contact: ");
+        number = Integer.parseInt(scanner.nextLine());
+
+        // Add lab technician to database
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
+            String query = "INSERT INTO users (id, username, password, user_type, f_name, l_name, contact) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, labTechID);
+            preparedStatement.setString(2, userName);
+            preparedStatement.setString(3, pass);
+            preparedStatement.setString(4, userType);
+            preparedStatement.setString(5, labTechFName);
+            preparedStatement.setString(6, labTechLName);
+            preparedStatement.setInt(7, number);
+
+            int rowsInserted = preparedStatement.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Lab Technician added successfully.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error adding lab technician: " + e.getMessage());
+        }
+        scanner.close();
     }
 
-
-    private void removeLabTech() {
+    public void removeLabTech() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Lab Technician ID to remove: ");
-        int labTechID = scanner.nextInt();
+        labTechID = Integer.parseInt(scanner.nextLine());
 
-        boolean removed = labTechs.removeIf(labTech -> labTech.labTechID == labTechID);
+        // Remove lab technician from database
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
+            String query = "DELETE FROM users WHERE id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, labTechID);
 
-        if (removed) {
-            System.out.println("Lab Technician removed successfully.");
-        } else {
-            System.out.println("Lab Technician not found with the given ID.");
+            int rowsDeleted = preparedStatement.executeUpdate();
+            if (rowsDeleted > 0) {
+                System.out.println("Lab Technician removed successfully.");
+            } else {
+                System.out.println("Lab Technician not found with the given ID.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error removing lab technician: " + e.getMessage());
         }
+        scanner.close();
     }
 
-    private void viewLabTechDetails() {
+    public void viewLabTechDetails() {
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Lab Technician ID to view details: ");
-        int labTechID = scanner.nextInt();
+        labTechID = Integer.parseInt(scanner.nextLine());
 
-        for (LabTech labTech : labTechs) {
-            if (labTech.labTechID == labTechID) {
+        // View lab technician details from database
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
+            String query = "SELECT * FROM users WHERE id = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, labTechID);
+
+            java.sql.ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
                 System.out.println("Lab Technician Details:");
-                System.out.println("ID: " + labTech.labTechID);
-                System.out.println("Name: " + labTech.labTechName);
-                System.out.println("Shift: " + labTech.shift);
-                return;
+                System.out.println("ID: " + resultSet.getInt("id"));
+                System.out.println("Full Name: " + resultSet.getString("f_name") + resultSet.getString("l_name"));
+                System.out.println("Username " + resultSet.getString("username"));
+                System.out.println("Password: " + resultSet.getString("password"));
+                System.out.println("User Type: " + resultSet.getString("user_type"));
+                System.out.println("Contact: " + resultSet.getInt("contact"));
+            } else {
+                System.out.println("Lab Technician not found with the given ID.");
             }
+        } catch (SQLException e) {
+            System.out.println("Error viewing lab technician details: " + e.getMessage());
         }
-
-        System.out.println("Lab Technician not found with the given ID.");
+        scanner.close();
     }
-
-    public void addLabResults() {
-        InventoryItem item = new InventoryItem();
-
-        System.out.print("Enter Item ID: ");
-        item.itemID = scanner.nextInt();
-        scanner.nextLine(); // Consume newline character
-
-        System.out.print("Enter Item Name: ");
-        item.itemName = scanner.nextLine();
-
-        System.out.print("Enter Item Description: ");
-        item.description = scanner.nextLine();
-
-        System.out.print("Enter Item Quantity: ");
-        item.quantity = scanner.nextInt();
-
-        System.out.print("Enter Item Unit Price: ");
-        item.unitPrice = scanner.nextDouble();
-
-        inventory.add(item);
-        System.out.println("Inventory item added successfully.");
-    }
-
-    public void removeLabResults() {
-        System.out.print("Enter Item ID to remove: ");
-        int itemID = scanner.nextInt();
-
-        boolean removed = inventory.removeIf(item -> item.itemID == itemID);
-
-        if (removed) {
-            System.out.println("Inventory item removed successfully.");
-        } else {
-            System.out.println("Inventory item not found with the given ID.");
-        }
-    }
-
-    public void viewLabResults() {
-        System.out.print("Enter Item ID to view details: ");
-        int itemID = scanner.nextInt();
-
-        for (InventoryItem item : inventory) {
-            if (item.itemID == itemID) {
-                System.out.println("Inventory Item Details:");
-                System.out.println("ID: " + item.itemID);
-                System.out.println("Name: " + item.itemName);
-                System.out.println("Description: " + item.description);
-                System.out.println("Quantity: " + item.quantity);
-                System.out.println("Unit Price: " + item.unitPrice);
-                return;
-            }
-        }
-
-        System.out.println("Inventory item not found with the given ID.");
-    }
-
-    private static class LabTech {
-        private int labTechID;
-        private String labTechName;
-        private String shift;
-    }
-
 }
+
+
