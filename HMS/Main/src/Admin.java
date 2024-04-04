@@ -151,7 +151,6 @@ public class Admin {
                             break;
 
                             case 3:
-                            //AdminMenu.RemoveMenu();
                                 do {
                                     System.out.println("\n1. Doctor");
                                     System.out.println("2. Lab Tech");
