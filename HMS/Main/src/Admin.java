@@ -33,84 +33,207 @@ public class Admin {
                         input = scanner.nextInt();
                         switch (input) {
                             case 1:
-                                
+                                Patient p1 = new Patient();
+                                p1.addPatient();
                             break;
 
                             case 2:
-                                
+                                //code
                             break;
                             case 3:
-                                
+                            Patient p3 = new Patient();
+                            p3.removePatient();
                             break;
                             case 4:
                             System.out.println("Exiting...");
                             AdminMenu();
                             break;
                             default:
-                            System.out.println("Invalid option. Please choose a number from 1 to 7.");
+                            System.out.println("Invalid option. Please choose a number from 1 to 4.");
                                 break;
                         }
                     } while (input != 4);
                     break;
+                    
                 case 2:
                     //logic for registering a staff 
                     System.out.println("You have chosen to Register Staff");
                     do {
                         System.out.println("\n1. Register Staff");
-                        System.out.println("2. Update Staff");
+                        System.out.println("2. View Staff");
                         System.out.println("3. Remove Staff");
                         System.out.println("4. Exit");
                         System.out.print("Select choice: ");
                         input = scanner.nextInt();
                         switch (input) {
                             case 1:
-                                
+                            
+                                do {
+                                    System.out.println("\n1. Doctor");
+                                    System.out.println("2. Lab Tech");
+                                    System.out.println("3. Nurse");
+                                    System.out.println("4. Exit");
+                                    System.out.print("Select choice: ");
+                                    input = scanner.nextInt();
+                                    switch (input) {
+                                        case 1:
+                                        System.out.println("\nDoctor Selected");
+                                            
+                                            break;
+
+                                        case 2:
+                                        System.out.println("\nLab Tech Selected");
+                                        LabTech r1 = new LabTech();
+                                        r1.addLabTech();
+                                            break;
+
+                                        case 3:
+                                        System.out.println("\nNurse Selected");
+                                        Nurse n1 = new Nurse();
+                                        n1.addNurse();
+                                            
+                                            break;
+
+                                        case 4:
+                                        System.out.println("Exiting...");
+                                        AdminMenu();
+                                            break;
+
+                                        default:
+                                        System.out.println("Invalid option. Please choose a number from 1 to 4.");
+                                            break;
+                                    }
+                                    scanner.close();
+                                }while (input != 4);
                             break;
 
                             case 2:
-                                
+                                do {
+                                    System.out.println("\n1. Doctor");
+                                    System.out.println("2. Lab Tech");
+                                    System.out.println("3. Nurse");
+                                    System.out.println("4. Exit");
+                                    System.out.print("Select choice: ");
+                                    input = scanner.nextInt();
+                                    switch (input) {
+                                        case 1:
+                                        System.out.println("\nDoctor Selected");
+                                            
+                                            break;
+
+                                        case 2:
+                                        System.out.println("\nLab Tech Selected");
+                                        LabTech r2 = new LabTech();
+                                        r2.viewLabTechDetails();
+                                            break;
+
+                                        case 3:
+                                        System.out.println("\nNurse Selected");
+                                        Nurse n1 = new Nurse();
+                                        n1.viewNurseDetails();
+                                            break;
+
+                                        case 4:
+                                        System.out.println("Exiting...");
+                                        AdminMenu();
+                                            break;
+                                    
+                                        default:
+                                        System.out.println("Invalid option. Please choose a number from 1 to 4.");
+                                            break;
+                                    }
+
+                                }while (input != 4);
                             break;
+
                             case 3:
-                                
+                            //AdminMenu.RemoveMenu();
+                                do {
+                                    System.out.println("\n1. Doctor");
+                                    System.out.println("2. Lab Tech");
+                                    System.out.println("3. Nurse");
+                                    System.out.println("4. Exit");
+                                    System.out.print("Select choice: ");
+                                    input = scanner.nextInt();
+                                    switch (input) {
+                                        case 1:
+                                        System.out.println("\nDoctor Selected");
+                                            
+                                            break;
+
+                                        case 2:
+                                        System.out.println("\nLab Tech Selected");
+                                        LabTech r1 = new LabTech();
+                                        r1.removeLabTech();
+                                            break;
+
+                                        case 3:
+                                        System.out.println("\nNurse Selected");
+                                        Nurse n1 = new Nurse();
+                                        n1.removeNurse(); 
+                                            break;
+
+                                        case 4:
+                                        System.out.println("Exiting...");
+                                        AdminMenu();
+                                            break;
+                                    
+                                        default:
+                                        System.out.println("Invalid option. Please choose a number from 1 to 4.");
+                                        
+                                            break;
+                                    }
+
+                                }while (input != 4);
+                                scanner.close();     
                             break;
+
                             case 4:
                             System.out.println("Exiting...");
                             AdminMenu();
                             break;
                             default:
-                            System.out.println("Invalid option. Please choose a number from 1 to 7.");
+                            System.out.println("Invalid option. Please choose a number from 1 to 4.");
                                 break;
                         }
                     } while (input != 4);
                     break;
+
                 case 3:
                     //logic for creating an invoice 
                     System.out.println("You have chosen to Create Invoice");
-                    
+                    //code
                     break;
+
                 case 4:
                     //logic for scheduling an appointment 
                     System.out.println("You have chosen to Schedule Appointment");
-                    
+                    Doctor doc = new Doctor();
+                    doc.DoctorMenu(); 
                     break;
+
                 case 5:
                     //logic for viewing patient basic information records
                     System.out.println("You have chosen to View Patient Basic Information Records");
-                    
+                    Patient p1 = new Patient();
+                    p1.viewPatientDetails();
                     break;
+
                 case 6:
                     // logic for uploading a prescription order 
                     System.out.println("You have chosen to Upload Prescription Order");
-                    
+                    //code
                     break;
+
                 case 7:
                     //logic for viewing patient medical history 
                     System.out.println("You have chosen to View Patient Medical History");
-                    
+                    ResultsStorage re3 = new ResultsStorage();
+                    re3.viewLabResults();
                     break;
+
                 case 8:
                 System.out.println("Exiting...");
-                //System.exit(0);
                 System.out.println("Logged out Successfully");
                 Main in = new Main();
                 in.Home();
@@ -119,7 +242,7 @@ public class Admin {
                     AdminMenu();
                     break;
             }
-            scanner.close();
         }while (choice != 8);
+        scanner.close();
     }
 }

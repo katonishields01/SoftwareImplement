@@ -31,7 +31,10 @@ public class Main {
                             input = scanner.nextInt();
                         switch (input) {
                             case 1:
-                             //code   
+                            System.out.println("Creating New Patient Account");
+                            Patient p1 = new Patient();
+                            p1.addPatient();
+                            System.out.println("Account Created Successfully");  
                             break;
                             case 2:
                             System.out.println("Please Log Admin or Contact Admin to Continue.");
@@ -50,7 +53,7 @@ public class Main {
                             break;
                         }
                             choice = scanner.nextInt();
-                        }while(input != 3);
+                        }while(true && input != 3);
                         break;
                     default:
                         System.out.println("Invalid option. Please choose a number from 1 to 3.");
@@ -58,8 +61,9 @@ public class Main {
                         in5.Home();
                         break;
                 }
-                scanner.close();
-            }while (choice != 2);
+                
+            }while (true && choice != 2);
+            scanner.close();
         }
     }
 

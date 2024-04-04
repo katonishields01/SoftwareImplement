@@ -1,6 +1,7 @@
+//Team Effort
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+//import java.security.MessageDigest;
+//import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -31,12 +32,12 @@ public class Login {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
+                String userType = resultSet.getString("user_type");
                 String hashedPassword = resultSet.getString("password");
-                //String[] userType = {"admin", "patient", "doctor", "lab_tech", "nurse"};
-                String userType = "admin";
-                //String userType = resultSet.getString("user_type");
+                
+                
 
-                // if (isPasswordValid(passwordInput, hashedPassword)) {
+                //if (isPasswordValid(passwordInput, hashedPassword)) {
                     if (passwordInput.equals(hashedPassword)) {
                     System.out.println("Login successful. Welcome " + userType);
 
@@ -45,23 +46,31 @@ public class Login {
                             Admin enter1 = new Admin();
                             enter1.AdminMenu();
                             break;
+
                         case "patient":
                             Patient enter2 = new Patient();
                             enter2.patientMenu();
                             break;
+
                         case "doctor":
                             /*Doctor enter3 = new Doctor();
                             enter3.doctorMenu();
                             break;*/
+
                         case "nurse":
-                            // code for nurse
+                            Nurse enter4 = new Nurse();
+                            enter4.nurseMenu();
                             break;
+
                         case "lab_tech":
-                            //LabTech enter5 = new LabTech();
-                            //enter5.labTechMenu();
+                            LabTech enter5 = new LabTech();
+                            enter5.labTechMenu();
                             break;
+
                         default:
                             System.out.println("Invalid user type");
+                            Main in = new Main();
+                            in.Home();
                     }
                 } else {
                     System.out.println("Invalid username or password");
@@ -77,7 +86,7 @@ public class Login {
             System.out.println("Error: " + e.getMessage());
         }
     }
-        
+    /* 
     private static boolean isPasswordValid(String passwordInput, String hashedPassword) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -93,6 +102,6 @@ public class Login {
             System.out.println("Error: " + e.getMessage());
             return false;
         }
-    }
+    }*/
     
 }
