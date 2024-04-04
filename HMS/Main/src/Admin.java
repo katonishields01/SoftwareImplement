@@ -38,16 +38,19 @@ public class Admin {
                             break;
 
                             case 2:
-                                //code
+                                //code to update
                             break;
+
                             case 3:
                             Patient p3 = new Patient();
                             p3.removePatient();
                             break;
+
                             case 4:
                             System.out.println("Exiting...");
                             AdminMenu();
                             break;
+
                             default:
                             System.out.println("Invalid option. Please choose a number from 1 to 4.");
                                 break;
@@ -78,7 +81,8 @@ public class Admin {
                                     switch (input) {
                                         case 1:
                                         System.out.println("\nDoctor Selected");
-                                            
+                                            Doctor d1 = new Doctor();
+                                            d1.addDoctor();
                                             break;
 
                                         case 2:
@@ -91,7 +95,6 @@ public class Admin {
                                         System.out.println("\nNurse Selected");
                                         Nurse n1 = new Nurse();
                                         n1.addNurse();
-                                            
                                             break;
 
                                         case 4:
@@ -118,7 +121,8 @@ public class Admin {
                                     switch (input) {
                                         case 1:
                                         System.out.println("\nDoctor Selected");
-                                            
+                                        Doctor d1 = new Doctor();
+                                        d1.viewDoctorDetails();
                                             break;
 
                                         case 2:
@@ -158,7 +162,8 @@ public class Admin {
                                     switch (input) {
                                         case 1:
                                         System.out.println("\nDoctor Selected");
-                                            
+                                        Doctor d1 = new Doctor();
+                                        d1.removeDoctor();
                                             break;
 
                                         case 2:
