@@ -1,10 +1,25 @@
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Scanner scanner = new Scanner(System.in); 
-        int choice;
-        /*do {
+        //Scanner scanner = new Scanner(System.in); 
+        //int choice;
+        
+        Doctor doc = new Doctor();
+        doc.doctorMenu();
+    }
+}
+
+
+  /*Admin enter = new Admin();
+        enter.AdminMenu();*/
+/*public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean consultationDocumented = false;
+        String patientId = "";
+        String requestStatus = "";
+        String labResults = ""; */
+/*do {
             System.out.print("Please Select: ");
             System.out.println("\n1. Log-In");
             System.out.println("2. Sign-Up");
@@ -26,27 +41,3 @@ public class Main {
             scanner.close();
         }while (choice != 2);
     }*/
-
-    Doctor doc = new Doctor();
-    doc.doctorMenu();
-
-    }
-}
-
-  /*Admin enter = new Admin();
-        enter.AdminMenu();*/
-<<<<<<< HEAD
-
-        /*New person, who dis?*/
-
-        //testinhg case
-
-        
-=======
-/*public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        boolean consultationDocumented = false;
-        String patientId = "";
-        String requestStatus = "";
-        String labResults = ""; */
->>>>>>> 76240066690f7eed69c2a119a785446ec47c48e4
