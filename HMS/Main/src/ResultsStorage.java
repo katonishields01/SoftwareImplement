@@ -47,7 +47,7 @@ public class ResultsStorage {
         } catch (SQLException e) {
             System.out.println("Error removing Results: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 
     //add results to database
@@ -91,7 +91,7 @@ public class ResultsStorage {
         } catch (SQLException e) {
             System.out.println("Error adding Results: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
     //view lab results in database
     public void viewLabResults() {
@@ -119,7 +119,7 @@ public class ResultsStorage {
         } catch (SQLException e) {
             System.out.println("Error viewing results details: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 }
 

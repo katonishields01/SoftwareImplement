@@ -53,9 +53,9 @@ public class Login {
                             break;
 
                         case "doctor":
-                            /*Doctor enter3 = new Doctor();
-                            enter3.doctorMenu();
-                            break;*/
+                            Doctor enter3 = new Doctor();
+                            enter3.DoctorMenu();
+                            break;
 
                         case "nurse":
                             Nurse enter4 = new Nurse();
@@ -86,8 +86,8 @@ public class Login {
             System.out.println("Error: " + e.getMessage());
         }
     }
-    /* 
-    private static boolean isPasswordValid(String passwordInput, String hashedPassword) {
+    
+    /*private static boolean isPasswordValid(String passwordInput, String hashedPassword) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             byte[] hashedInput = md.digest(passwordInput.getBytes());

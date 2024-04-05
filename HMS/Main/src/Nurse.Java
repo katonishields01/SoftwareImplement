@@ -15,6 +15,7 @@ public class Nurse {
     private String pass;
     private String userType;
     private int number;
+    private int patientId;
 
 
     public void nurseMenu() {
@@ -44,8 +45,32 @@ public class Nurse {
                     //code to patient for height, age, weight dob
                     break;
                 case 4:
-                    //code from doctor notes
-                    break;
+                System.out.print("Enter PatientID  to view details: ");
+                patientId = Integer.parseInt(scanner.nextLine());
+        
+                // View nurse details from database
+                try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
+                    String query = "SELECT * FROM results WHERE id = ?";
+                    PreparedStatement preparedStatement = connection.prepareStatement(query);
+                    preparedStatement.setInt(1, patientId);
+        
+                    java.sql.ResultSet resultSet = preparedStatement.executeQuery();
+                    if (resultSet.next()) {
+                        System.out.println("Patient's Details:");
+                        System.out.println("ID: " + resultSet.getInt("patientid"));
+                        System.out.println("Full Name: " + resultSet.getString("patientf_name") + resultSet.getString("patientl_name"));
+                        System.out.println("Symptoms " + resultSet.getString("symptom"));
+                        System.out.println("Diagnosis: " + resultSet.getString("diagnosis"));
+                        System.out.println("Prescription: " + resultSet.getString("prescription"));
+                        System.out.println("Doctor: " + resultSet.getString("doctorName"));
+                    } else {
+                        System.out.println("Patient not found with the given ID.");
+                    }
+                } catch (SQLException e) {
+                    System.out.println("Error viewing Patient details: " + e.getMessage());
+                }
+                //scanner.close();
+                break;
                 case 5:
                 System.out.println("Exiting...");
                 System.out.println("Logged out Successfully");

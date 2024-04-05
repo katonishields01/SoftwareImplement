@@ -35,7 +35,9 @@ public void Home() {
                         System.out.println("Creating New Patient Account");
                         Patient p1 = new Patient();
                         p1.addPatient();
-                        System.out.println("Account Created Successfully");  
+                        System.out.println("Account Created Successfully");
+                        Main in = new Main();
+                        in.Home();  
                     break;
 
                     case 2:
