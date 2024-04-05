@@ -1,9 +1,4 @@
 //Kaisia Fagan (ID#)
-//import java.sql.Connection;
-//import java.sql.DriverManager;
-//import java.sql.PreparedStatement;
-//import java.sql.SQLException;
-//import java.util.Scanner;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,71 +15,114 @@ public class Doctor {
     private String pass;
     private String userType;
     private int number;
+    private int input;
+    private int patientId;
+    private String doctorName;
+    private String symptoms;
+    private String diagnosis;
+    private String prescription;
+    private String consultationDate;
+    private String consultationTime;
 
     public void DoctorMenu () {
         
         Scanner scanner = new Scanner(System.in);
-        int input;
-        boolean consultationDocumented = false;
-        String patientId = "";
-        String requestStatus = "";
-        String labResults = "";
+       
 
         do {
             System.out.println("Doctor's Menu:");
             System.out.println("1: Document consultation");
-            System.out.println("2: Document prescription refill");
-            System.out.println("3: Document chat with a doctor");
+            System.out.println("2: Document prescription");
+            System.out.println("3: Records Symptoms and Diagnosis");
             System.out.println("4: Request lab results");
             System.out.println("5: Exit");
             System.out.print("Enter your choice: ");
-            input = scanner.nextInt();
+            input = Integer.parseInt(scanner.nextLine());
 
             switch (input) {
                 case 1:
-                    System.out.println("Consultation with doctor");
-                    // Request consultation with doctor
-                    requestStatus = "approved";
-                    if (requestStatus.equals("approved")) {
-                        System.out.println("Start consultation");
-                        // Document consultation information
-                        consultationDocumented = true;
-                    } else {
-                        System.out.println("Consultation request not approved");
-                    }
+                    System.out.println("Document consultation");
+                        System.out.println("Enter Doctor's name: ");
+                        doctorName = scanner.nextLine();
+            
+                        System.out.println("Enter consultation date (yyyy-mm-dd): ");
+                        consultationDate = scanner.nextLine();
+            
+                        System.out.println("Enter consultation time (hh:mm): ");
+                        consultationTime = scanner.nextLine();
+            
+                        System.out.println("Enter Patient ID: ");
+                        patientId = Integer.parseInt(scanner.nextLine());
+
+                        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
+                            String query = "INSERT INTO results (patientid, doctorName, consult) VALUES (?, ?, ?)";
+                            PreparedStatement preparedStatement = connection.prepareStatement(query);
+                            preparedStatement.setInt(1, patientId);
+                            preparedStatement.setString(2, doctorName);
+                            preparedStatement.setString(3, consultationDate + " " + consultationTime);
+                
+                            int rowsInserted = preparedStatement.executeUpdate();
+                            if (rowsInserted > 0) {
+                                System.out.println("Consultation added successfully.");
+                            }
+                        } catch (SQLException e) {
+                            System.out.println("Error adding Consultation: " + e.getMessage());
+                        }
                     break;
+
                 case 2:
-                    if (consultationDocumented) {
-                        System.out.println("Document a Prescription Refill");
+                        System.out.println("Document a Prescription");
                         System.out.print("Enter PatientID: ");
-                        patientId = scanner.next();
-                        System.out.println("Patient ID: " + patientId);
-                    } else {
-                        System.out.println("Consultation not yet documented");
-                    }
+                        patientId = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Document your prescribed medications: ");
+                        prescription = scanner.nextLine();
+                        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
+                            String query = "INSERT INTO results (patientid, prescription) VALUES (?, ?)";
+                            PreparedStatement preparedStatement = connection.prepareStatement(query);
+                            preparedStatement.setInt(1, patientId);
+                            preparedStatement.setString(2, prescription);
+                            
+                
+                            int rowsInserted = preparedStatement.executeUpdate();
+                            if (rowsInserted > 0) {
+                                System.out.println("Symptoms and Diagnosis added successfully.");
+                            }
+                        } catch (SQLException e) {
+                            System.out.println("Error adding Symptoms and Diagnosis: " + e.getMessage());
+                        }
                     break;
+
                 case 3:
-                    System.out.println("Document Chat with a doctor");
-                    System.out.print("Enter PatientID: ");
-                    patientId = scanner.next();
-                    System.out.println("Patient ID: " + patientId);
-                    // Chat with patient
+                    System.out.println("Document Symptoms and Diagnosis");
+                    System.out.println("Enter Patient TRN: ");
+                    patientId = Integer.parseInt(scanner.nextLine());
+
+                    System.out.print("Enter Patient Symptoms: ");
+                    symptoms = scanner.nextLine();
+
+                    System.out.print("Record your diagnosis: ");
+                    diagnosis = scanner.nextLine();
+                    
+                        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
+                            String query = "INSERT INTO results (patientid, symptom, diagnosis) VALUES (?, ?, ?)";
+                            PreparedStatement preparedStatement = connection.prepareStatement(query);
+                            preparedStatement.setInt(1, patientId);
+                            preparedStatement.setString(2, symptoms);
+                            preparedStatement.setString(3, diagnosis);
+                
+                            int rowsInserted = preparedStatement.executeUpdate();
+                            if (rowsInserted > 0) {
+                                System.out.println("Symptoms and Diagnosis added successfully.");
+                            }
+                        } catch (SQLException e) {
+                            System.out.println("Error adding Symptoms and Diagnosis: " + e.getMessage());
+                        }
                     break;
+
                 case 4:
                     System.out.println("Request Lab Results");
                     ResultsStorage re3 = new ResultsStorage();
                     re3.viewLabResults();
-                    // Request Lab Results
-                    if (labResults.equals("available")) {
-                        System.out.println("Upload patient lab results");
-                        // Upload patient lab results
-                        ResultsStorage re1 = new ResultsStorage() ;
-                        re1.addLabResults();
-                        System.out.println("Lab results have been uploaded");
-                        // Notify patient of available results
-                    } else {
-                        System.out.println("Lab results not available");
-                    }
                     break;
                 case 5:
                 System.out.println("Exiting...");
@@ -201,6 +239,73 @@ public class Doctor {
     }
 }
 
+
+/////////////////////////////////////////////////////////////
+/*
+ * import java.util.Scanner;
+
+public class Doctor {
+        Scanner scanner = new Scanner(System.in);
+        String doctorName = "";
+        String patientID = "";
+        String symptoms = "";
+        String diagnosis = "";
+        String prescription = "";
+        String consultationDate = "";
+        String consultationTime = "";
+
+        System.out.println("Enter 1 to start documenting a consultation");
+
+        int input = scanner.nextInt();
+
+        if (input == 1) {
+            System.out.println("Consultation Documentation");
+		
+        System.out.print("Enter Doctor's name: ");
+        doctorName = scanner.nextLine();
+
+            System.out.print("Enter consultation date (yyyy-mm-dd): ");
+            consultationDate = scanner.next();
+
+            System.out.print("Enter consultation time (hh:mm): ");
+            consultationTime = scanner.next();
+
+            System.out.print("Enter Patient ID: ");
+            patientID = scanner.next();
+System.out.print("Enter Patient Symptoms: ");
+            scanner.nextLine(); // consume newline character
+            symptoms = scanner.nextLine();
+
+            System.out.print("Record your diagnosis: ");
+            diagnosis = scanner.nextLine();
+
+            System.out.print("Document your prescribed medications: ");
+            prescription = scanner.nextLine();
+        } else {
+            // Invalid input
+            System.out.println("Invalid! Please enter a valid input");
+        }
+
+        System.out.println("-----------------------------------");
+        System.out.println("Consultation Documentation");
+        System.out.println("Doctor: " + doctorName);
+        System.out.println("Date: " + consultationDate);
+        System.out.println("Time: " + consultationTime);
+        System.out.println("Patient ID: " + patientID);
+        System.out.println("Symptoms: " + symptoms);
+        System.out.println("Diagnosis: " + diagnosis);
+        System.out.println("Prescription: " + prescription);
+        System.out.println("-----------------------------------");
+
+        scanner.close();
+    }
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
 
 
 

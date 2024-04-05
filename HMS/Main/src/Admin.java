@@ -1,4 +1,9 @@
 //Katoni Shileds(2003903)
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Admin {
@@ -77,7 +82,7 @@ public class Admin {
                                     System.out.println("3. Nurse");
                                     System.out.println("4. Exit");
                                     System.out.print("Select choice: ");
-                                    input = scanner.nextInt();
+                                    input = Integer.parseInt(scanner.nextLine());
                                     switch (input) {
                                         case 1:
                                         System.out.println("\nDoctor Selected");
@@ -106,7 +111,6 @@ public class Admin {
                                         System.out.println("Invalid option. Please choose a number from 1 to 4.");
                                             break;
                                     }
-                                    scanner.close();
                                 }while (input != 4);
                             break;
 
@@ -189,7 +193,6 @@ public class Admin {
                                     }
 
                                 }while (input != 4);
-                                scanner.close();     
                             break;
 
                             case 4:
@@ -205,8 +208,71 @@ public class Admin {
 
                 case 3:
                     //logic for creating an invoice 
+                    ArrayList <String[]> resultsRecords = new ArrayList<String[]>();
+                    ArrayList <String> services = new ArrayList<String>();
+
                     System.out.println("You have chosen to Create Invoice");
-                    //code
+                    System.out.println("Enter Patient ID to continue: ");
+                    int patientid = scanner.nextInt();
+        
+                    try {  
+                        String url = "jdbc:mysql://localhost:3306/admin";
+                        String user = "root";
+                        String password = "SIProject2024";
+                        Connection connection = DriverManager.getConnection(url, user, password);
+
+                        String query = "SELECT patientid, test_done, patientf_name, patientl_name FROM results WHERE patientid = ?";
+                        PreparedStatement preparedStatement = connection.prepareStatement(query);
+                        preparedStatement.setInt(1, patientid);
+
+                        java.sql.ResultSet resultSet = preparedStatement.executeQuery();
+                        while (resultSet.next()) {
+                            String[] record = {resultSet.getString("patientid"), resultSet.getString("test_done"), 
+                            resultSet.getString("patientf_name"), resultSet.getString("patientl_name"), ""};
+                            resultsRecords.add(record);
+                        }
+                       
+                        for (String[] record : resultsRecords) {
+                            String testdone = record[1];
+                            String cost = "";
+
+                            if(!services.contains(testdone)){
+                                services.add(testdone);
+                            }
+                            
+                            query = "SELECT cost FROM service WHERE itemname = ?";
+                            preparedStatement = connection.prepareStatement(query);
+                            preparedStatement.setString(1, testdone);
+
+                            resultSet = preparedStatement.executeQuery();
+                            if (resultSet.next()){
+                                cost = resultSet.getString("cost");
+                            }
+                            
+                            record[4] = cost;
+                        }
+
+                        System.out.println("\tInvoice");
+                        for(String test : services){
+                            float amount = 0.00f;
+                    
+                            for(String[] record : resultsRecords){
+                                if(record[1].equals(test) ){
+                                    amount = amount + Float.parseFloat(record[4]);
+                                }
+                            }
+                            System.out.println("--------------------------------");
+                            System.out.println("Patient Name: " + resultsRecords.get(0)[2] + " " + resultsRecords.get(0)[3]);
+                            System.out.println("Test Done: " + test.toUpperCase() + ": $" + amount);
+                            System.out.println("--------------------------------");
+
+                        }
+//id=[0], testdone=[1], fn=[2],ln=[3], cost=[4]
+                        connection.close();
+                    } catch (SQLException e) {
+                        System.out.println("Error viewing Patient Invoice " + e.getMessage());
+                    }
+        
                     break;
 
                 case 4:
