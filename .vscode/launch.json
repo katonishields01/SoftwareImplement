@@ -9,6 +9,13 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",
+            "projectName": "SoftwareImplement_904b794c"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
             "projectName": "SoftwareImplement_2a79b543"
         },
         {
