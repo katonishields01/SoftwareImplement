@@ -82,7 +82,7 @@ public class Admin {
                                     System.out.println("3. Nurse");
                                     System.out.println("4. Exit");
                                     System.out.print("Select choice: ");
-                                    input = Integer.parseInt(scanner.nextLine());
+                                    input = scanner.nextInt();
                                     switch (input) {
                                         case 1:
                                         System.out.println("\nDoctor Selected");

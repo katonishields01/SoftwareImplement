@@ -34,8 +34,7 @@ public class Patient {
             System.out.println("4. Pay invoice balance");
             System.out.println("5. Exit");
             System.out.println("Select your choice: ");
-            choice = scanner.nextInt();
-            scanner.nextLine();
+            choice = Integer.parseInt(scanner.nextLine());
 
             switch (choice)
             {
@@ -95,7 +94,7 @@ public class Patient {
                 System.out.println("Invalid Choice. Please select a valid choice.");
             }
         }while (choice != 5);
-        scanner.close();
+        //scanner.close();
     }
 
     /* Method to handle validation and processing of appointment request */
@@ -152,7 +151,7 @@ public class Patient {
             if (resultSet.next()) {
                 System.out.println("Patient Details:");
                 System.out.println("ID: " + resultSet.getInt("id"));
-                System.out.println("Full Name: " + resultSet.getString("f_name") + resultSet.getString("l_name"));
+                System.out.println("Full Name: " + resultSet.getString("f_name") + " " + resultSet.getString("l_name"));
                 System.out.println("Username " + resultSet.getString("username"));
                 System.out.println("Password: " + resultSet.getString("password"));
                 System.out.println("User Type: " + resultSet.getString("user_type"));
@@ -163,7 +162,7 @@ public class Patient {
         } catch (SQLException e) {
             System.out.println("Error viewing Patient details: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 
     //Add new Patient
@@ -210,7 +209,7 @@ public class Patient {
             } catch (SQLException e) {
                 System.out.println("Error adding Patient: " + e.getMessage());
             }
-            scanner.close();
+            //scanner.close();
         }
         else
         {
@@ -238,6 +237,6 @@ public class Patient {
         } catch (SQLException e) {
             System.out.println("Error removing Patient: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 }

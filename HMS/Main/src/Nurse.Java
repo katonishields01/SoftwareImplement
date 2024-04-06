@@ -129,7 +129,7 @@ public class Nurse {
         } catch (SQLException e) {
             System.out.println("Error adding Nurse: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 
     public void removeNurse() {
@@ -153,7 +153,7 @@ public class Nurse {
         } catch (SQLException e) {
             System.out.println("Error removing Nurse: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 
     public void viewNurseDetails() {
@@ -182,6 +182,6 @@ public class Nurse {
         } catch (SQLException e) {
             System.out.println("Error viewing nurse details: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 }
