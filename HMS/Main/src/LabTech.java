@@ -53,7 +53,7 @@ public class LabTech {
                     labTechMenu();
             }
         }while (choice != 4);
-        scanner.close();
+        //scanner.close();
     }
 
     public void addLabTech() {
@@ -100,7 +100,7 @@ public class LabTech {
         } catch (SQLException e) {
             System.out.println("Error adding lab technician: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 
     public void removeLabTech() {
@@ -123,7 +123,7 @@ public class LabTech {
         } catch (SQLException e) {
             System.out.println("Error removing lab technician: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 
     public void viewLabTechDetails() {
@@ -141,7 +141,7 @@ public class LabTech {
             if (resultSet.next()) {
                 System.out.println("Lab Technician Details:");
                 System.out.println("ID: " + resultSet.getInt("id"));
-                System.out.println("Full Name: " + resultSet.getString("f_name") + resultSet.getString("l_name"));
+                System.out.println("Full Name: " + resultSet.getString("f_name") + " " + resultSet.getString("l_name"));
                 System.out.println("Username " + resultSet.getString("username"));
                 System.out.println("Password: " + resultSet.getString("password"));
                 System.out.println("User Type: " + resultSet.getString("user_type"));
@@ -152,7 +152,7 @@ public class LabTech {
         } catch (SQLException e) {
             System.out.println("Error viewing lab technician details: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 }
 

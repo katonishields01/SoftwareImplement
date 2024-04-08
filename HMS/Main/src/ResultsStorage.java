@@ -109,7 +109,12 @@ public class ResultsStorage {
             if (resultSet.next()) {
                 System.out.println("Results Details:");
                 System.out.println("ID: " + resultSet.getInt("patientid"));
-                System.out.println("Name: " + resultSet.getString("patientf_name") + resultSet.getString("patientl_name"));
+                System.out.println("Name: " + resultSet.getString("patientf_name") + " " + resultSet.getString("patientl_name"));
+                System.out.println("Age: " + resultSet.getString("age"));
+                System.out.println("Height: " + resultSet.getString("height"));
+                System.out.println("Weight: " + resultSet.getString("weight"));
+                System.out.println("Symptoms: " + resultSet.getString("symptom"));
+                System.out.println("Diagnosis: " + resultSet.getString("diagnosis"));
                 System.out.println("Test Done: " + resultSet.getString("test_done"));
                 System.out.println("Description: " + resultSet.getString("description"));
                 System.out.println("Final Results: " + resultSet.getString("results_col"));

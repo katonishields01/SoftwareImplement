@@ -1,4 +1,5 @@
-//Katoni Shileds(2003903)
+//Katoni Shields(2003903)
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,6 +8,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Admin {
+        private String f_name;
+        private String l_name;
+        private String test;
+        private String prescription;
+        private int patientID;
+        private String patientFName;
+        private String patientLName;
+        private String date;
+        private String time;
+        private String doctor;
     public void AdminMenu()
     {
         Scanner scanner = new Scanner(System.in); 
@@ -19,7 +30,7 @@ public class Admin {
             System.out.println("3. Create Invoice");
             System.out.println("4. Schedule Appointment");
             System.out.println("5. View Patient Personal Information Records");
-            System.out.println("6. Upload Prescription Order");
+            System.out.println("6. View Prescription Order");
             System.out.println("7. View Patient Medical History");
             System.out.println("8. Exit");
             System.out.print("Select choice: ");
@@ -32,8 +43,9 @@ public class Admin {
                     do {
                         System.out.println("\n1. Register Patient");
                         System.out.println("2. Update Patient");
-                        System.out.println("3. Remove Patient");
-                        System.out.println("4. Exit");
+                        System.out.println("3. View Patient");
+                        System.out.println("4. Remove Patient");
+                        System.out.println("5. Exit");
                         System.out.print("Select choice: ");
                         input = scanner.nextInt();
                         switch (input) {
@@ -47,11 +59,16 @@ public class Admin {
                             break;
 
                             case 3:
+                                Patient p4 = new Patient();
+                                p4.viewPatientDetails();
+                            break;
+
+                            case 4:
                             Patient p3 = new Patient();
                             p3.removePatient();
                             break;
 
-                            case 4:
+                            case 5:
                             System.out.println("Exiting...");
                             AdminMenu();
                             break;
@@ -60,7 +77,7 @@ public class Admin {
                             System.out.println("Invalid option. Please choose a number from 1 to 4.");
                                 break;
                         }
-                    } while (input != 4);
+                    } while (input != 5);
                     break;
                     
                 case 2:
@@ -276,10 +293,35 @@ public class Admin {
                     break;
 
                 case 4:
-                    //logic for scheduling an appointment 
+                    //logic for scheduling an appointment
                     System.out.println("You have chosen to Schedule Appointment");
-                    Doctor doc = new Doctor();
-                    doc.DoctorMenu(); 
+                    do {
+                        System.out.println("\n1. Add");
+                        System.out.println("2. Remove");
+                        System.out.println("3. Exit");
+                        System.out.print("Select choice: ");
+                        input = scanner.nextInt();
+                        switch (input) {
+                            case 1:
+                            System.out.println("\nAdd Appointment");
+                            addAppointment();
+                            break;
+
+                            case 2:
+                            System.out.println("\nRemove Appointment");
+                            removeAppointment();
+                            break;
+
+                            case 3:
+                            System.out.println("Exiting...");
+                            AdminMenu();
+                            break;
+                        
+                            default:
+                            System.out.println("Invalid option. Please choose a number from 1 to 4.");
+                            break;
+                        }
+                    }while (input != 4);
                     break;
 
                 case 5:
@@ -291,8 +333,9 @@ public class Admin {
 
                 case 6:
                     // logic for uploading a prescription order 
-                    System.out.println("You have chosen to Upload Prescription Order");
-                    //code
+                    //fix this!!!!!!!!!!!
+                    System.out.println("You have chosen to View Prescription Order");
+                    viewPrescriptionOrder();
                     break;
 
                 case 7:
@@ -315,4 +358,113 @@ public class Admin {
         }while (choice != 8);
         scanner.close();
     }
+
+    //view prescription (NEEDS TO BE FIXED)
+    public void viewPrescriptionOrder() {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter Patient TRN to view details: ");
+        String patientID = scanner.nextLine();
+
+        /*System.out.print("Enter Results ID to view details: ");
+        int resultID = Integer.parseInt(scanner.nextLine());*/
+
+        // View details from database
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
+        String query = "SELECT patientid, patientf_name, patientl_name, prescription FROM results WHERE patientid = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setString(1, patientID);
+        preparedStatement.setString(2, f_name);
+        preparedStatement.setString(3, l_name);
+        preparedStatement.setString(4, prescription);
+        //preparedStatement.setInt(, resultID);
+        
+
+        
+        java.sql.ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            System.out.println("----------------------------------------");
+            System.out.println("Patient's Prescription Order:");
+            System.out.println("ID: " + resultSet.getInt("patientid"));
+            System.out.println("Full Name: " + resultSet.getString("patientf_name") + " " + resultSet.getString("patientl_name"));
+            System.out.println("Test Done: " + resultSet.getInt("test_done"));
+            System.out.println("Prescription: " + resultSet.getInt("prescription"));
+            System.out.println("----------------------------------------");
+
+        } else {
+            System.out.println("Prescription Order not found with the given ID.");
+        }
+        } catch (SQLException e) {
+        System.out.println("Error viewing Prescription details: " + e.getMessage());
+        }
+        //scanner.close();
+        
+        }
+
+        public void addAppointment(){
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter First Name: ");
+                patientFName = scanner.nextLine();
+        
+                System.out.print("Enter Last Name: ");
+                patientLName = scanner.nextLine();
+        
+                System.out.print("Enter TRN/ID#: ");
+                patientID = Integer.parseInt(scanner.nextLine());
+        
+                System.out.print("Enter Doctor's Name: ");
+                doctor = scanner.nextLine();
+
+                System.out.print("Enter appointment date (YYYY-MM-DD): ");
+                date = scanner.nextLine();
+
+                System.out.print("Enter appointment time (HH:MM): ");
+                time = scanner.nextLine();
+        
+                
+                // Add appointment to database
+                try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
+                    String query = "INSERT INTO appointment (patientid, f_name, l_name, doctorname, appointment_time) VALUES (?, ?, ?, ?, ?)";
+                    PreparedStatement preparedStatement = connection.prepareStatement(query);
+                    preparedStatement.setInt(1, patientID);
+                    preparedStatement.setString(2, patientFName);
+                    preparedStatement.setString(3, patientLName);
+                    preparedStatement.setString(4, doctor);
+                    preparedStatement.setString(5, date + "" + time);
+        
+                    int rowsInserted = preparedStatement.executeUpdate();
+                    if (rowsInserted > 0) {
+                        System.out.println("Appointment added successfully.");
+                    }
+                } catch (SQLException e) {
+                    System.out.println("Error adding appointment: " + e.getMessage());
+                }
+        }
+
+        //removing appointment
+        public void removeAppointment(){
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter Patient's TRN/ID# to remove: ");
+            patientID = Integer.parseInt(scanner.nextLine());
+        
+
+        // Remove doctor from database
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
+            String query = "DELETE FROM appointment WHERE patientid = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, patientID);
+
+            int rowsDeleted = preparedStatement.executeUpdate();
+            if (rowsDeleted > 0) {
+                System.out.println("Appointment removed successfully.");
+            } else {
+                System.out.println("Appointment not found with the given ID.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error removing Appointment: " + e.getMessage());
+        }
+        //scanner.close();
+        }
+
+
 }

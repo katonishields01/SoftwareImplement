@@ -1,7 +1,5 @@
 //Team Effort
 
-//import java.security.MessageDigest;
-//import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -86,22 +84,4 @@ public class Login {
             System.out.println("Error: " + e.getMessage());
         }
     }
-    
-    /*private static boolean isPasswordValid(String passwordInput, String hashedPassword) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] hashedInput = md.digest(passwordInput.getBytes());
-            StringBuffer sb = new StringBuffer();
-            for (byte b : hashedInput) {
-                sb.append(String.format("%02x", b));
-            }
-            String hashedInputString = sb.toString();
-
-            return hashedInputString.equals(hashedPassword);
-        } catch (NoSuchAlgorithmException e) {
-            System.out.println("Error: " + e.getMessage());
-            return false;
-        }
-    }*/
-    
 }

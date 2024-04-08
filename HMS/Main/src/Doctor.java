@@ -1,4 +1,4 @@
-//Kaisia Fagan (ID#)
+//Kaisia Fagan (1907394)
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -28,7 +28,6 @@ public class Doctor {
         
         Scanner scanner = new Scanner(System.in);
        
-
         do {
             System.out.println("Doctor's Menu:");
             System.out.println("1: Document consultation");
@@ -77,11 +76,10 @@ public class Doctor {
                         System.out.print("Document your prescribed medications: ");
                         prescription = scanner.nextLine();
                         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
-                            String query = "INSERT INTO results (patientid, prescription) VALUES (?, ?)";
+                            String query = "UPDATE results SET prescription = ? WHERE patientid = ?";
                             PreparedStatement preparedStatement = connection.prepareStatement(query);
-                            preparedStatement.setInt(1, patientId);
-                            preparedStatement.setString(2, prescription);
-                            
+                            preparedStatement.setString(1, prescription);
+                            preparedStatement.setInt(2, patientId);
                 
                             int rowsInserted = preparedStatement.executeUpdate();
                             if (rowsInserted > 0) {
@@ -104,11 +102,11 @@ public class Doctor {
                     diagnosis = scanner.nextLine();
                     
                         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
-                            String query = "INSERT INTO results (patientid, symptom, diagnosis) VALUES (?, ?, ?)";
+                            String query = "UPDATE results SET symptom = ?, diagnosis = ? where patientid = ?";
                             PreparedStatement preparedStatement = connection.prepareStatement(query);
-                            preparedStatement.setInt(1, patientId);
-                            preparedStatement.setString(2, symptoms);
-                            preparedStatement.setString(3, diagnosis);
+                            preparedStatement.setString(1, symptoms);
+                            preparedStatement.setString(2, diagnosis);
+                            preparedStatement.setInt(3, patientId);
                 
                             int rowsInserted = preparedStatement.executeUpdate();
                             if (rowsInserted > 0) {
@@ -134,10 +132,8 @@ public class Doctor {
                     break;
             }
         }while (input != 5);
-        scanner.close();
+        //scanner.close();
     }
-
-
 
     public void addDoctor() {
         Scanner scanner = new Scanner(System.in);
@@ -182,7 +178,7 @@ public class Doctor {
         } catch (SQLException e) {
             System.out.println("Error adding doctor: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 
     public void removeDoctor() {
@@ -206,7 +202,7 @@ public class Doctor {
         } catch (SQLException e) {
             System.out.println("Error removing doctor: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 
     public void viewDoctorDetails() {
@@ -224,7 +220,7 @@ public class Doctor {
             if (resultSet.next()) {
                 System.out.println("Doctor Details:");
                 System.out.println("ID: " + resultSet.getInt("id"));
-                System.out.println("Full Name: " + resultSet.getString("f_name") + resultSet.getString("l_name"));
+                System.out.println("Full Name: " + resultSet.getString("f_name") + " " + resultSet.getString("l_name"));
                 System.out.println("Username " + resultSet.getString("username"));
                 System.out.println("Password: " + resultSet.getString("password"));
                 System.out.println("User Type: " + resultSet.getString("user_type"));
@@ -235,178 +231,7 @@ public class Doctor {
         } catch (SQLException e) {
             System.out.println("Error viewing Doctor details: " + e.getMessage());
         }
-        scanner.close();
+        //scanner.close();
     }
 }
 
-
-/////////////////////////////////////////////////////////////
-/*
- * import java.util.Scanner;
-
-public class Doctor {
-        Scanner scanner = new Scanner(System.in);
-        String doctorName = "";
-        String patientID = "";
-        String symptoms = "";
-        String diagnosis = "";
-        String prescription = "";
-        String consultationDate = "";
-        String consultationTime = "";
-
-        System.out.println("Enter 1 to start documenting a consultation");
-
-        int input = scanner.nextInt();
-
-        if (input == 1) {
-            System.out.println("Consultation Documentation");
-		
-        System.out.print("Enter Doctor's name: ");
-        doctorName = scanner.nextLine();
-
-            System.out.print("Enter consultation date (yyyy-mm-dd): ");
-            consultationDate = scanner.next();
-
-            System.out.print("Enter consultation time (hh:mm): ");
-            consultationTime = scanner.next();
-
-            System.out.print("Enter Patient ID: ");
-            patientID = scanner.next();
-System.out.print("Enter Patient Symptoms: ");
-            scanner.nextLine(); // consume newline character
-            symptoms = scanner.nextLine();
-
-            System.out.print("Record your diagnosis: ");
-            diagnosis = scanner.nextLine();
-
-            System.out.print("Document your prescribed medications: ");
-            prescription = scanner.nextLine();
-        } else {
-            // Invalid input
-            System.out.println("Invalid! Please enter a valid input");
-        }
-
-        System.out.println("-----------------------------------");
-        System.out.println("Consultation Documentation");
-        System.out.println("Doctor: " + doctorName);
-        System.out.println("Date: " + consultationDate);
-        System.out.println("Time: " + consultationTime);
-        System.out.println("Patient ID: " + patientID);
-        System.out.println("Symptoms: " + symptoms);
-        System.out.println("Diagnosis: " + diagnosis);
-        System.out.println("Prescription: " + prescription);
-        System.out.println("-----------------------------------");
-
-        scanner.close();
-    }
- * 
- * 
- * 
- * 
- * 
- * 
- */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/////////////////////////////ignore/////////////////////////
-/* 
-public class Doctor {
-    public void DoctorMenu () {
-    
-        Scanner scanner = new Scanner(System.in);
-        int input;
-        boolean consultationDocumented = false;
-        String patientId = "";
-        String requestStatus = "";
-        String labResults = "";
-
-        while (true) {
-            System.out.println("Menu:");
-            System.out.println("1: Request consultation with doctor");
-            System.out.println("2: Request a prescription refill");
-            System.out.println("3: Request a chat with a doctor");
-            System.out.println("4: Request lab results");
-            System.out.println("5: Exit");
-            System.out.print("Enter your choice: ");
-            int input = scanner.nextInt();
-
-            switch (input) {
-                case 1:
-                    System.out.println("Request consultation with doctor");
-                    // Request consultation with doctor
-                    requestStatus = "approved";
-                    if (requestStatus.equals("approved")) {
-                        System.out.println("Start consultation");
-                        // Document consultation information
-                        consultationDocumented = true;
-                    } else {
-                        System.out.println("Consultation request not approved");
-                    }
-                    break;
-                case 2:
-                    if (consultationDocumented) {
-                        System.out.println("Request a Prescription Refill");
-                        System.out.print("Enter PatientID: ");
-                        patientId = scanner.next();
-                        System.out.println("Patient ID: " + patientId);
-                    } else {
-                        System.out.println("Consultation not yet documented");
-                    }
-                    break;
-                case 3:
-                    System.out.println("Request Chat with a doctor");
-                    System.out.print("Enter PatientID: ");
-                    patientId = scanner.next();
-                    System.out.println("Patient ID: " + patientId);
-                    // Chat with patient
-                    break;
-                case 4:
-                    System.out.println("Request Lab Results");
-                    System.out.print("Enter PatientID: ");
-                    patientId = scanner.next();
-                    // Request Lab Results
-                    if (labResults.equals("available")) {
-                        System.out.println("Upload patient lab results");
-                        // Upload patient lab results
-                        System.out.println("Lab results have been uploaded");
-                        // Notify patient of available results
-                    } else {
-                        System.out.println("Lab results not available");
-                    }
-                    break;
-                case 5:
-                    System.out.println("Exiting...");
-                    System.exit(0);
-                    Login in = new Login();
-                    in.User();
-                default:
-                    System.out.println("Invalid! Please enter a valid input");
-                    break;
-            }
-        }
-    }
-}
-}*/
