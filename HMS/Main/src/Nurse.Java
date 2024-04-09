@@ -29,6 +29,7 @@ public class Nurse {
         Scanner scanner = new Scanner(System.in); 
         int choice;
         do {
+            System.out.println("----------------------");
             System.out.println("\tWELCOME");
             System.out.println("\n\tMenu Options:");
             System.out.println("1. Add Lab Results");
@@ -37,6 +38,7 @@ public class Nurse {
             System.out.println("4. View Diagnosis");
             System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
+            System.out.println("----------------------");
             choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
@@ -52,6 +54,7 @@ public class Nurse {
 
                 case 3:
                     //code to patient for height, age, weight dob
+                    System.out.println("----------------------");
                     System.out.println("Enter Patient's TRN/ID#: ");
                     int patientId = Integer.parseInt(scanner.nextLine());
                     System.out.println("Enter Patient's age: ");
@@ -82,10 +85,12 @@ public class Nurse {
                     } catch (SQLException e) {
                         System.out.println("Error updating patient's information: " + e.getMessage());
                     }
+                    System.out.println("----------------------");
                     break;
 
                 case 4:
-                System.out.print("Enter PatientID  to view details: ");
+                System.out.println("----------------------");
+                System.out.println("Enter PatientID  to view details: ");
                 patientId = Integer.parseInt(scanner.nextLine());
         
                 // View nurse details from database
@@ -109,11 +114,13 @@ public class Nurse {
                 } catch (SQLException e) {
                     System.out.println("Error viewing Patient details: " + e.getMessage());
                 }
+                System.out.println("----------------------");
                 //scanner.close();
                 break;
                 case 5:
                 System.out.println("Exiting...");
                 System.out.println("Logged out Successfully");
+                System.out.println("----------------------");
                 Main in = new Main();
                 in.Home();
                     break;
@@ -127,8 +134,8 @@ public class Nurse {
     //Add new nurse
     public void addNurse() {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter Nurse ID: ");
+        System.out.println("----------------------");
+        System.out.println("Enter Nurse ID: ");
         nurseID = Integer.parseInt(scanner.nextLine());
        
 
@@ -170,11 +177,13 @@ public class Nurse {
             System.out.println("Error adding Nurse: " + e.getMessage());
         }
         //scanner.close();
+        System.out.println("----------------------");
     }
 
     public void removeNurse() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Nurse ID to remove: ");
+        System.out.println("----------------------");
+        System.out.println("Enter Nurse ID to remove: ");
         nurseID = Integer.parseInt(scanner.nextLine());
         
 
@@ -198,7 +207,8 @@ public class Nurse {
 
     public void viewNurseDetails() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Nurse ID to view details: ");
+        System.out.println("----------------------");
+        System.out.println("Enter Nurse ID to view details: ");
         nurseID = Integer.parseInt(scanner.nextLine());
 
         // View nurse details from database
@@ -223,5 +233,6 @@ public class Nurse {
             System.out.println("Error viewing nurse details: " + e.getMessage());
         }
         //scanner.close();
+        System.out.println("----------------------");
     }
 }

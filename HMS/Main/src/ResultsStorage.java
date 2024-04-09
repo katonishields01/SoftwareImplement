@@ -27,6 +27,7 @@ public class ResultsStorage {
 
     public void removeLabResults() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("----------------------");
         System.out.print("Enter Patient ID to remove: ");
         patientid = Integer.parseInt(scanner.nextLine());
 
@@ -47,13 +48,14 @@ public class ResultsStorage {
         } catch (SQLException e) {
             System.out.println("Error removing Results: " + e.getMessage());
         }
+        System.out.println("----------------------");
         //scanner.close();
     }
 
     //add results to database
     public void addLabResults() {
         Scanner scanner = new Scanner(System.in);
-
+        System.out.println("----------------------");
         System.out.print("Enter Patient ID: ");
         patientid = Integer.parseInt(scanner.nextLine());
 
@@ -92,11 +94,13 @@ public class ResultsStorage {
             System.out.println("Error adding Results: " + e.getMessage());
         }
         //scanner.close();
+        System.out.println("----------------------");
     }
     //view lab results in database
     public void viewLabResults() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Patient ID to view details: ");
+        System.out.println("----------------------");
+        System.out.println("Enter Patient ID to view details: ");
         patientid = Integer.parseInt(scanner.nextLine());
 
         // View details from database
@@ -125,6 +129,7 @@ public class ResultsStorage {
             System.out.println("Error viewing results details: " + e.getMessage());
         }
         //scanner.close();
+        System.out.println("----------------------");
     }
 }
 

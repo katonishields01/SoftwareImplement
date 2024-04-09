@@ -24,6 +24,7 @@ public class Admin {
         int choice;
         int input;
         do {
+            System.out.println("----------------------");
             System.out.println("\t******WELCOME ADMINISTRATOR MENU******");
             System.out.println("\n1. Register Patient");
             System.out.println("2. Register Staff");
@@ -34,11 +35,13 @@ public class Admin {
             System.out.println("7. View Patient Medical History");
             System.out.println("8. Exit");
             System.out.print("Select choice: ");
+            System.out.println("----------------------");
             choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
                     //logic for registering a patient
+                    System.out.println("----------------------");
                     System.out.println("You have chosen to Register Patient");
                     do {
                         System.out.println("\n1. Register Patient");
@@ -47,6 +50,7 @@ public class Admin {
                         System.out.println("4. Remove Patient");
                         System.out.println("5. Exit");
                         System.out.print("Select choice: ");
+                        System.out.println("----------------------");
                         input = scanner.nextInt();
                         switch (input) {
                             case 1:
@@ -70,6 +74,7 @@ public class Admin {
 
                             case 5:
                             System.out.println("Exiting...");
+                            System.out.println("----------------------");
                             AdminMenu();
                             break;
 
@@ -82,6 +87,7 @@ public class Admin {
                     
                 case 2:
                     //logic for registering a staff 
+                    System.out.println("----------------------");
                     System.out.println("You have chosen to Register Staff");
                     do {
                         System.out.println("\n1. Register Staff");
@@ -89,16 +95,19 @@ public class Admin {
                         System.out.println("3. Remove Staff");
                         System.out.println("4. Exit");
                         System.out.print("Select choice: ");
+                        System.out.println("----------------------");
                         input = scanner.nextInt();
                         switch (input) {
                             case 1:
                             
                                 do {
+                                    System.out.println("----------------------");
                                     System.out.println("\n1. Doctor");
                                     System.out.println("2. Lab Tech");
                                     System.out.println("3. Nurse");
                                     System.out.println("4. Exit");
                                     System.out.print("Select choice: ");
+                                    System.out.println("----------------------");
                                     input = scanner.nextInt();
                                     switch (input) {
                                         case 1:
@@ -121,6 +130,7 @@ public class Admin {
 
                                         case 4:
                                         System.out.println("Exiting...");
+                                        System.out.println("----------------------");
                                         AdminMenu();
                                             break;
 
@@ -133,11 +143,13 @@ public class Admin {
 
                             case 2:
                                 do {
+                                    System.out.println("----------------------");
                                     System.out.println("\n1. Doctor");
                                     System.out.println("2. Lab Tech");
                                     System.out.println("3. Nurse");
                                     System.out.println("4. Exit");
                                     System.out.print("Select choice: ");
+                                    System.out.println("----------------------");
                                     input = scanner.nextInt();
                                     switch (input) {
                                         case 1:
@@ -160,6 +172,7 @@ public class Admin {
 
                                         case 4:
                                         System.out.println("Exiting...");
+                                        System.out.println("----------------------");
                                         AdminMenu();
                                             break;
                                     
@@ -173,11 +186,13 @@ public class Admin {
 
                             case 3:
                                 do {
+                                    System.out.println("----------------------");
                                     System.out.println("\n1. Doctor");
                                     System.out.println("2. Lab Tech");
                                     System.out.println("3. Nurse");
                                     System.out.println("4. Exit");
                                     System.out.print("Select choice: ");
+                                    System.out.println("----------------------");
                                     input = scanner.nextInt();
                                     switch (input) {
                                         case 1:
@@ -200,12 +215,12 @@ public class Admin {
 
                                         case 4:
                                         System.out.println("Exiting...");
+                                        System.out.println("----------------------");
                                         AdminMenu();
                                             break;
                                     
                                         default:
                                         System.out.println("Invalid option. Please choose a number from 1 to 4.");
-                                        
                                             break;
                                     }
 
@@ -214,6 +229,7 @@ public class Admin {
 
                             case 4:
                             System.out.println("Exiting...");
+                            System.out.println("----------------------");
                             AdminMenu();
                             break;
                             default:
@@ -227,9 +243,10 @@ public class Admin {
                     //logic for creating an invoice 
                     ArrayList <String[]> resultsRecords = new ArrayList<String[]>();
                     ArrayList <String> services = new ArrayList<String>();
-
+                    System.out.println("----------------------");
                     System.out.println("You have chosen to Create Invoice");
                     System.out.println("Enter Patient ID to continue: ");
+                    System.out.println("----------------------");
                     int patientid = scanner.nextInt();
         
                     try {  
@@ -294,6 +311,7 @@ public class Admin {
 
                 case 4:
                     //logic for scheduling an appointment
+                    System.out.println("----------------------");
                     System.out.println("You have chosen to Schedule Appointment");
                     do {
                         System.out.println("\n1. Add");
@@ -303,17 +321,20 @@ public class Admin {
                         input = scanner.nextInt();
                         switch (input) {
                             case 1:
+                            System.out.println("----------------------");
                             System.out.println("\nAdd Appointment");
                             addAppointment();
                             break;
 
                             case 2:
+                            System.out.println("----------------------");
                             System.out.println("\nRemove Appointment");
                             removeAppointment();
                             break;
 
                             case 3:
                             System.out.println("Exiting...");
+                            System.out.println("----------------------");
                             AdminMenu();
                             break;
                         
@@ -326,6 +347,7 @@ public class Admin {
 
                 case 5:
                     //logic for viewing patient basic information records
+                    System.out.println("----------------------");
                     System.out.println("You have chosen to View Patient Basic Information Records");
                     Patient p1 = new Patient();
                     p1.viewPatientDetails();
@@ -334,12 +356,14 @@ public class Admin {
                 case 6:
                     // logic for uploading a prescription order 
                     //fix this!!!!!!!!!!!
+                    System.out.println("----------------------");
                     System.out.println("You have chosen to View Prescription Order");
                     viewPrescriptionOrder();
                     break;
 
                 case 7:
                     //logic for viewing patient medical history 
+                    System.out.println("----------------------");
                     System.out.println("You have chosen to View Patient Medical History");
                     ResultsStorage re3 = new ResultsStorage();
                     re3.viewLabResults();
@@ -348,6 +372,7 @@ public class Admin {
                 case 8:
                 System.out.println("Exiting...");
                 System.out.println("Logged out Successfully");
+                System.out.println("----------------------");
                 Main in = new Main();
                 in.Home();
                 default:
@@ -362,7 +387,7 @@ public class Admin {
     //view prescription (NEEDS TO BE FIXED)
     public void viewPrescriptionOrder() {
         Scanner scanner = new Scanner(System.in);
-        
+        System.out.println("----------------------");
         System.out.print("Enter Patient TRN to view details: ");
         String patientID = scanner.nextLine();
 
@@ -398,11 +423,12 @@ public class Admin {
         System.out.println("Error viewing Prescription details: " + e.getMessage());
         }
         //scanner.close();
-        
+        System.out.println("----------------------");
         }
 
         public void addAppointment(){
             Scanner scanner = new Scanner(System.in);
+            System.out.println("----------------------");
             System.out.print("Enter First Name: ");
                 patientFName = scanner.nextLine();
         
@@ -439,11 +465,13 @@ public class Admin {
                 } catch (SQLException e) {
                     System.out.println("Error adding appointment: " + e.getMessage());
                 }
+                System.out.println("----------------------");
         }
 
         //removing appointment
         public void removeAppointment(){
             Scanner scanner = new Scanner(System.in);
+            System.out.println("----------------------");
             System.out.print("Enter Patient's TRN/ID# to remove: ");
             patientID = Integer.parseInt(scanner.nextLine());
         
@@ -464,6 +492,7 @@ public class Admin {
             System.out.println("Error removing Appointment: " + e.getMessage());
         }
         //scanner.close();
+        System.out.println("----------------------");
         }
 
 

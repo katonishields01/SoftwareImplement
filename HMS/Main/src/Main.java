@@ -11,18 +11,23 @@ public void Home() {
     Scanner scanner = new Scanner(System.in); 
     int choice;
     int input;
-    System.out.print("Please Select: ");
+    System.out.println("----------------------");
+    System.out.println("Welcome to JM Hospital Management System");
+    System.out.println("Please Select: ");
     System.out.println("\n1. Log-In");
     System.out.println("2. Sign-Up");
+    System.out.println("----------------------");
     choice = scanner.nextInt();
     do {
     switch (choice) {
         case 1:
+            System.out.println("----------------------");
             System.out.println("Log-In Selected");
             Login user = new Login();
             user.User();
             break;
         case 2:
+            System.out.println("----------------------");
             System.out.println("Creating New Account");
             // Add New Account
             do {
@@ -33,15 +38,18 @@ public void Home() {
                 input = scanner.nextInt();
                 switch (input) {
                     case 1:
+                        System.out.println("----------------------");
                         System.out.println("Creating New Patient Account");
                         Patient p1 = new Patient();
                         p1.addPatient();
+                        System.out.println("----------------------");
                         System.out.println("Account Created Successfully");
                         Main in = new Main();
                         in.Home();  
                     break;
 
                     case 2:
+                        System.out.println("----------------------");
                         System.out.println("Please Log Admin or Contact Admin to Continue.");
                         Main in2 = new Main();
                         in2.Home();   

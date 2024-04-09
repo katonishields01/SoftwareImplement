@@ -20,13 +20,15 @@ public class LabTech {
         Scanner scanner = new Scanner(System.in); 
         int choice;
         do {
+            System.out.println("----------------------");
             System.out.println("\tWELCOME");
-            System.out.println("\n\tMenu Options:");
+            System.out.println("\tMenu Options:");
             System.out.println("1. Add Lab Results");
             System.out.println("2. Remove Lab Results");
             System.out.println("3. View Lab Results");
             System.out.println("4. Exit");
-            System.out.print("Enter your choice: ");
+            System.out.println("----------------------");
+            System.out.println("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
@@ -45,6 +47,7 @@ public class LabTech {
                 case 4:
                 System.out.println("Exiting...");
                 System.out.println("Logged out Successfully");
+                System.out.println("----------------------");
                 Main in = new Main();
                 in.Home();
                     break;
@@ -58,8 +61,8 @@ public class LabTech {
 
     public void addLabTech() {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter Lab Technician ID: ");
+        System.out.println("----------------------");
+        System.out.println("Enter Lab Technician ID: ");
         labTechID = Integer.parseInt(scanner.nextLine());
         //scanner.nextLine();
 
@@ -78,8 +81,9 @@ public class LabTech {
         System.out.print("Enter Lab Technician Password: ");
         pass = scanner.nextLine();
 
-        System.out.print("Enter Lab Technician Contact: ");
+        System.out.println("Enter Lab Technician Contact: ");
         number = Integer.parseInt(scanner.nextLine());
+        System.out.println("----------------------");
 
         // Add lab technician to database
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/admin", "root", "SIProject2024")) {
@@ -100,12 +104,14 @@ public class LabTech {
         } catch (SQLException e) {
             System.out.println("Error adding lab technician: " + e.getMessage());
         }
+        System.out.println("----------------------");
         //scanner.close();
     }
 
     public void removeLabTech() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Lab Technician ID to remove: ");
+        System.out.println("----------------------");
+        System.out.println("Enter Lab Technician ID to remove: ");
         labTechID = Integer.parseInt(scanner.nextLine());
 
         // Remove lab technician from database
@@ -123,11 +129,13 @@ public class LabTech {
         } catch (SQLException e) {
             System.out.println("Error removing lab technician: " + e.getMessage());
         }
+        System.out.println("----------------------");
         //scanner.close();
     }
 
     public void viewLabTechDetails() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("----------------------");
         System.out.print("Enter Lab Technician ID to view details: ");
         labTechID = Integer.parseInt(scanner.nextLine());
 
@@ -153,6 +161,7 @@ public class LabTech {
             System.out.println("Error viewing lab technician details: " + e.getMessage());
         }
         //scanner.close();
+        System.out.println("----------------------");
     }
 }
 

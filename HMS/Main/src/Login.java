@@ -16,6 +16,7 @@ public class Login {
     Scanner scanner = new Scanner(System.in);
     
     public void User() {
+        System.out.println("----------------------");
         System.out.println("Enter username:");
         String username = scanner.nextLine();
         System.out.println("Enter password:");
@@ -38,6 +39,7 @@ public class Login {
                 //if (isPasswordValid(passwordInput, hashedPassword)) {
                     if (passwordInput.equals(hashedPassword)) {
                     System.out.println("Login successful. Welcome " + userType);
+                    System.out.println("----------------------");
 
                     switch (userType) {
                         case "admin":
@@ -83,5 +85,6 @@ public class Login {
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        System.out.println("----------------------");
     }
 }

@@ -28,7 +28,7 @@ public class Patient {
         String requestPrescription;
         float invoice_Bal;
         int choice;
-
+        System.out.println("----------------------");
         System.out.println("Welcome to our Hospital Management Patient System!");
         do {
             System.out.println("Please select your choice from the Menu below: ");
@@ -38,12 +38,14 @@ public class Patient {
             System.out.println("4. Pay invoice balance");
             System.out.println("5. Exit");
             System.out.println("Select your choice: ");
+            System.out.println("----------------------");
             choice = Integer.parseInt(scanner.nextLine());
 
             switch (choice)
             {
                 /* Case 1 to allow user to input preferred appointment date */
                 case 1:
+                System.out.println("----------------------");
                 System.out.print("Enter First Name: ");
                 patientFName = scanner.nextLine();
         
@@ -80,6 +82,7 @@ public class Patient {
                 } catch (SQLException e) {
                     System.out.println("Error adding appointment: " + e.getMessage());
                 }
+                System.out.println("----------------------");
                 break;
 
                 /* Case 2 to allow user to request for lab results */
@@ -90,6 +93,7 @@ public class Patient {
 
                 /* Case 3 to allow user to request for medication */
                 case 3:
+                System.out.println("----------------------");
                 System.out.println("Enter the medication name: ");
                 requestPrescription = scanner.nextLine();
                 if (val_Medication_Name(requestPrescription))
@@ -99,6 +103,7 @@ public class Patient {
                 else {
                     System.out.println("Invalid medication name");
                 }
+                System.out.println("----------------------");
                 break;
 
                 /* Case 4 to allow user to pay for invoice */
@@ -106,6 +111,7 @@ public class Patient {
                     ArrayList <String[]> resultsRecords = new ArrayList<String[]>();
                     ArrayList <String> services = new ArrayList<String>();
 
+                    System.out.println("----------------------");
                     System.out.println("You have chosen to Create Invoice");
                     System.out.println("Enter Patient ID to continue: ");
                     int patientid = scanner.nextInt();
@@ -166,7 +172,7 @@ public class Patient {
                     } catch (SQLException e) {
                         System.out.println("Error viewing Patient Invoice " + e.getMessage());
                     }
-        
+                    System.out.println("----------------------");
                 System.out.println("Enter the amount to pay: ");
                 invoice_Bal = scanner.nextFloat();
                 if (Val_Amount(invoice_Bal) && invoice_Bal > 0)
@@ -176,12 +182,14 @@ public class Patient {
                 else {
                     System.out.println("Invalid Amount.");
                 }
+                System.out.println("----------------------");
                 break;
                 
                 /* Case 5 to allow user to exit system */
                 case 5:
                 System.out.println("Exiting...");
                 System.out.println("Logged out Successfully");
+                System.out.println("----------------------");
                 Main in = new Main();
                 in.Home();
                     break;
@@ -223,7 +231,9 @@ public class Patient {
     //View Patient Details
     public void viewPatientDetails() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("----------------------");
         System.out.print("Enter Patient TRN to view details: ");
+        System.out.println("----------------------");
         patientID = Integer.parseInt(scanner.nextLine());
 
         // View patient details from database
@@ -234,6 +244,7 @@ public class Patient {
 
             java.sql.ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+                System.out.println("----------------------");
                 System.out.println("Patient Details:");
                 System.out.println("ID: " + resultSet.getInt("id"));
                 System.out.println("Full Name: " + resultSet.getString("f_name") + " " + resultSet.getString("l_name"));
@@ -248,12 +259,14 @@ public class Patient {
             System.out.println("Error viewing Patient details: " + e.getMessage());
         }
         //scanner.close();
+        System.out.println("----------------------");
     }
 
     //Add new Patient
     public void addPatient() {
         Scanner scanner = new Scanner(System.in);
         if(userType != "patient") {
+            System.out.println("----------------------");
             System.out.print("Enter Patient TRN: ");
             patientID = Integer.parseInt(scanner.nextLine());
 
@@ -295,16 +308,20 @@ public class Patient {
                 System.out.println("Error adding Patient: " + e.getMessage());
             }
             //scanner.close();
+            System.out.println("----------------------");
         }
         else
         {
             System.out.println("Error creating account ");
+            System.out.println("----------------------");
         }
     }
 
     public void removePatient() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("----------------------");
         System.out.print("Enter Patient TRN to remove: ");
+        System.out.println("----------------------");
         patientID = Integer.parseInt(scanner.nextLine());
 
         // Remove patient from database
@@ -323,28 +340,6 @@ public class Patient {
             System.out.println("Error removing Patient: " + e.getMessage());
         }
         //scanner.close();
+        System.out.println("----------------------");
     }
 }
-
-//////////////////////IGNORE/////////////////////////////////
-/*private static boolean val_Date_Time(String requestAppointment) 
-    {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        try{
-            LocalDateTime.parse(requestAppointment, formatter);
-            return true;
-        } catch (Exception e){
-            return false;
-        }
-    }*/
-
-     //scanner.close();
-                /*System.out.println("Enter your preferred appointment date and time: ");
-                requestAppointment = scanner.nextLine();
-                if (val_Date_Time(requestAppointment))
-                {
-                    System.out.println("Appointment successfully scheduled for " + requestAppointment);
-                } 
-                else {
-                    System.out.println("Invalid format. Please use yyyy-MM-dd HH:mm format");
-                }*/

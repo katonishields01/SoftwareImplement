@@ -29,6 +29,7 @@ public class Doctor {
         Scanner scanner = new Scanner(System.in);
        
         do {
+            System.out.println("----------------------");
             System.out.println("Doctor's Menu:");
             System.out.println("1: Document consultation");
             System.out.println("2: Document prescription");
@@ -36,11 +37,13 @@ public class Doctor {
             System.out.println("4: Request lab results");
             System.out.println("5: Exit");
             System.out.print("Enter your choice: ");
+            System.out.println("----------------------");
             input = Integer.parseInt(scanner.nextLine());
 
             switch (input) {
                 case 1:
-                    System.out.println("Document consultation");
+                    System.out.println("----------------------");
+                        System.out.println("Document consultation");
                         System.out.println("Enter Doctor's name: ");
                         doctorName = scanner.nextLine();
             
@@ -67,11 +70,13 @@ public class Doctor {
                         } catch (SQLException e) {
                             System.out.println("Error adding Consultation: " + e.getMessage());
                         }
+                        System.out.println("----------------------");
                     break;
 
                 case 2:
+                        System.out.println("----------------------");
                         System.out.println("Document a Prescription");
-                        System.out.print("Enter PatientID: ");
+                        System.out.println("Enter PatientID: ");
                         patientId = Integer.parseInt(scanner.nextLine());
                         System.out.print("Document your prescribed medications: ");
                         prescription = scanner.nextLine();
@@ -88,9 +93,11 @@ public class Doctor {
                         } catch (SQLException e) {
                             System.out.println("Error adding Symptoms and Diagnosis: " + e.getMessage());
                         }
+                        System.out.println("----------------------");
                     break;
 
                 case 3:
+                    System.out.println("----------------------");
                     System.out.println("Document Symptoms and Diagnosis");
                     System.out.println("Enter Patient TRN: ");
                     patientId = Integer.parseInt(scanner.nextLine());
@@ -115,9 +122,11 @@ public class Doctor {
                         } catch (SQLException e) {
                             System.out.println("Error adding Symptoms and Diagnosis: " + e.getMessage());
                         }
+                        System.out.println("----------------------");
                     break;
 
                 case 4:
+                    System.out.println("----------------------");
                     System.out.println("Request Lab Results");
                     ResultsStorage re3 = new ResultsStorage();
                     re3.viewLabResults();
@@ -125,6 +134,7 @@ public class Doctor {
                 case 5:
                 System.out.println("Exiting...");
                 System.out.println("Logged out Successfully");
+                System.out.println("----------------------");
                 Main in = new Main();
                 in.Home();
                 default:
@@ -137,7 +147,7 @@ public class Doctor {
 
     public void addDoctor() {
         Scanner scanner = new Scanner(System.in);
-
+        System.out.println("----------------------");
         System.out.print("Enter Doctor's ID: ");
         doctorID = Integer.parseInt(scanner.nextLine());
        
@@ -179,10 +189,12 @@ public class Doctor {
             System.out.println("Error adding doctor: " + e.getMessage());
         }
         //scanner.close();
+        System.out.println("----------------------");
     }
 
     public void removeDoctor() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("----------------------");
         System.out.print("Enter Doctor's ID to remove: ");
         doctorID = Integer.parseInt(scanner.nextLine());
         
@@ -203,10 +215,12 @@ public class Doctor {
             System.out.println("Error removing doctor: " + e.getMessage());
         }
         //scanner.close();
+        System.out.println("----------------------");
     }
 
     public void viewDoctorDetails() {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("----------------------");
         System.out.print("Enter Doctor's ID to view details: ");
         int doctorID = Integer.parseInt(scanner.nextLine());
 
@@ -232,6 +246,7 @@ public class Doctor {
             System.out.println("Error viewing Doctor details: " + e.getMessage());
         }
         //scanner.close();
+        System.out.println("----------------------");
     }
 }
 
