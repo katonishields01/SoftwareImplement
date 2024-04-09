@@ -34,7 +34,7 @@ public class Admin {
             System.out.println("6. View Prescription Order");
             System.out.println("7. View Patient Medical History");
             System.out.println("8. Exit");
-            System.out.print("Select choice: ");
+            System.out.println("Select choice: ");
             System.out.println("----------------------");
             choice = scanner.nextInt();
 
@@ -49,7 +49,7 @@ public class Admin {
                         System.out.println("3. View Patient");
                         System.out.println("4. Remove Patient");
                         System.out.println("5. Exit");
-                        System.out.print("Select choice: ");
+                        System.out.println("Select choice: ");
                         System.out.println("----------------------");
                         input = scanner.nextInt();
                         switch (input) {
@@ -94,7 +94,7 @@ public class Admin {
                         System.out.println("2. View Staff");
                         System.out.println("3. Remove Staff");
                         System.out.println("4. Exit");
-                        System.out.print("Select choice: ");
+                        System.out.println("Select choice: ");
                         System.out.println("----------------------");
                         input = scanner.nextInt();
                         switch (input) {
@@ -106,7 +106,7 @@ public class Admin {
                                     System.out.println("2. Lab Tech");
                                     System.out.println("3. Nurse");
                                     System.out.println("4. Exit");
-                                    System.out.print("Select choice: ");
+                                    System.out.println("Select choice: ");
                                     System.out.println("----------------------");
                                     input = scanner.nextInt();
                                     switch (input) {
@@ -148,7 +148,7 @@ public class Admin {
                                     System.out.println("2. Lab Tech");
                                     System.out.println("3. Nurse");
                                     System.out.println("4. Exit");
-                                    System.out.print("Select choice: ");
+                                    System.out.println("Select choice: ");
                                     System.out.println("----------------------");
                                     input = scanner.nextInt();
                                     switch (input) {
@@ -191,7 +191,7 @@ public class Admin {
                                     System.out.println("2. Lab Tech");
                                     System.out.println("3. Nurse");
                                     System.out.println("4. Exit");
-                                    System.out.print("Select choice: ");
+                                    System.out.println("Select choice: ");
                                     System.out.println("----------------------");
                                     input = scanner.nextInt();
                                     switch (input) {
